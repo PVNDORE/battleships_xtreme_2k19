@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Controls;
 
 namespace battleships_xtreme_2k19.Models
 {
-    public class Map
+    public class Water : ISquare
     {
-
         #region StaticVariables
         #endregion
 
@@ -20,19 +18,20 @@ namespace battleships_xtreme_2k19.Models
         #endregion
 
         #region Attributs
-        private int size;
-        private ISquare[][] ocean;
+        private bool targeted;
+        private Position coordonates;
         #endregion
 
         #region Properties
-        public int Size
+        public Position Coordonates
         {
-            get { return size; }
-            set { size = value; }
+            get { return coordonates; }
+            set { coordonates = value; }
         }
-        public ISquare[][] Ocean
+        public bool Targeted
         {
-            get { return ocean; }
+            get { return targeted; }
+            set { targeted = value; }
         }
         #endregion
 
@@ -40,19 +39,25 @@ namespace battleships_xtreme_2k19.Models
         /// <summary>
         /// Default constructor.
         /// </summary>
-        public Map(int size)
+        public Water(bool targeted, Position coordonates)
         {
-            string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            this.size = size;
-            for (int i = 0; i < size; i++)
-            {
-                for (int j = 1; j < size; j++)
-                {
-                    Position coordonates = new Position(alphabet[i], j);
-                    this.ocean[i][j] = new Water(false, coordonates);
-                }
+            this.targeted = targeted;
+            this.coordonates = coordonates;
+        }
 
-            }
+        public bool GotTargeted()
+        {
+            return this.Targeted;
+        }
+
+        public bool IsWater()
+        {
+            return true;
+        }
+
+        public int SquareValue()
+        {
+            return 0;
         }
         #endregion
 

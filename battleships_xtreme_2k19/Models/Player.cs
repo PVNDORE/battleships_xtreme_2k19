@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace battleships_xtreme_2k19.Models
 {
-    public class Position
+    public class Player
     {
 
         #region StaticVariables
@@ -15,20 +19,26 @@ namespace battleships_xtreme_2k19.Models
         #endregion
 
         #region Attributs
-        private char xPosition;
-        private int yPosition;
+        private String name;
+        private Map mapPlacement;
+        private Map mapTarget;
         #endregion
 
         #region Properties
-        public char XPosition
+        public Map MapTarget
         {
-            get { return xPosition; }
-            set { xPosition = value; }
+            get { return mapTarget; }
+            set { mapTarget = value; }
         }
-        public int YPosition
+        public String Name
         {
-            get { return yPosition; }
-            set { yPosition = value; }
+            get { return name; }
+            set { name = value; }
+        }
+        public Map MapPlacement
+        {
+            get { return mapPlacement; }
+            set { mapPlacement = value; }
         }
         #endregion
 
@@ -36,10 +46,9 @@ namespace battleships_xtreme_2k19.Models
         /// <summary>
         /// Default constructor.
         /// </summary>
-        public Position(char xPosition, int yPosition)
+        public Player()
         {
-            this.xPosition = xPosition;
-            this.yPosition = yPosition;
+
         }
         #endregion
 

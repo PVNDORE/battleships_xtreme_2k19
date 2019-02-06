@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace battleships_xtreme_2k19.Models
 {
-    public class Position
+    public interface ISquare
     {
-
         #region StaticVariables
         #endregion
 
@@ -15,43 +18,27 @@ namespace battleships_xtreme_2k19.Models
         #endregion
 
         #region Attributs
-        private char xPosition;
-        private int yPosition;
         #endregion
 
         #region Properties
-        public char XPosition
-        {
-            get { return xPosition; }
-            set { xPosition = value; }
-        }
-        public int YPosition
-        {
-            get { return yPosition; }
-            set { yPosition = value; }
-        }
         #endregion
 
         #region Constructors
         /// <summary>
         /// Default constructor.
         /// </summary>
-        public Position(char xPosition, int yPosition)
-        {
-            this.xPosition = xPosition;
-            this.yPosition = yPosition;
-        }
         #endregion
 
         #region StaticFunctions
         #endregion
 
         #region Functions
+        bool IsWater();
+        bool GotTargeted();
+        int SquareValue();
         #endregion
 
         #region Events
         #endregion
-
-
     }
 }

@@ -24,5 +24,17 @@ namespace battleships_xtreme_2k19
         {
             InitializeComponent();
         }
+
+        private void BtnPlay_Click(object sender, RoutedEventArgs e)
+        {
+            Home.Visibility = Visibility.Hidden;
+            Play.Visibility = Visibility.Visible;
+        }
+
+        private void BtnOptions_Click(object sender, RoutedEventArgs e)
+        {
+            Home.Visibility = Visibility.Hidden;
+            Options.Visibility = Visibility.Visible;
+        }
     }
 }

@@ -41,8 +41,8 @@ namespace battleships_xtreme_2k19.Models
         /// </summary>
         public Water(bool targeted, Position coordonates)
         {
-            this.targeted = targeted;
-            this.coordonates = coordonates;
+            this.Targeted = targeted;
+            this.Coordonates = coordonates;
         }
 
         public bool GotTargeted()

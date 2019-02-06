@@ -38,8 +38,8 @@ namespace battleships_xtreme_2k19.Models
         /// </summary>
         public Position(char xPosition, int yPosition)
         {
-            this.xPosition = xPosition;
-            this.yPosition = yPosition;
+            this.XPosition = xPosition;
+            this.YPosition = yPosition;
         }
         #endregion
 

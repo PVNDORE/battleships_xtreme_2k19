@@ -8,7 +8,6 @@ namespace battleships_xtreme_2k19.Database
 {
     public class ApplicationDbContext
     {
-
         #region StaticVariables
         #endregion
 

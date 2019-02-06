@@ -7,30 +7,45 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-
-        <TabPanel x:Name="Home">
+        <Grid x:Name="Home">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            
             <TextBlock x:Name="title" Grid.Column="1" Grid.Row="1"> Battleships Xtreme 2k19</TextBlock>
             <Button x:Name="btnPlay" Grid.Column="1" Grid.Row="2" Click="BtnPlay_Click">Play</Button>
             <Button x:Name="btnOptions" Grid.Column="1" Grid.Row="3" Click="BtnOptions_Click">Options</Button>
-        </TabPanel>
-        <TabPanel x:Name="Play" Visibility="Hidden">
+        </Grid>
+        <Grid x:Name="Play" Visibility="Hidden">
             <TextBlock x:Name="title2" Grid.Column="1" Grid.Row="1"> Play</TextBlock>
-        </TabPanel>
-        <TabPanel x:Name="Options" Visibility="Hidden">
-            <TextBlock x:Name="title3" Grid.Column="1" Grid.Row="1"> Options</TextBlock>
-        </TabPanel>
+        </Grid>
+        <Grid x:Name="Options" Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock x:Name="titleMapSize" Grid.Column="1" Grid.Row="1">choose a map size</TextBlock>
+            <TextBox x:Name="mapSize" Grid.Column="1" Grid.Row="2"/>
+            <Button x:Name="btnConfirmMapSize" Grid.Column="1" Grid.Row="3" Click="BtnConfirmMapSize_Click">Confirm</Button>
+        </Grid>
     </Grid>
     
 </Window>

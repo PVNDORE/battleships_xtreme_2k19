@@ -77,7 +77,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\ISquare.cs" />
     <Compile Include="Models\Map.cs" />
+    <Compile Include="Models\Position.cs" />
+    <Compile Include="Models\SquareShip.cs" />
+    <Compile Include="Models\Water.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

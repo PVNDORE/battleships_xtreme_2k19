@@ -1,4 +1,5 @@
-﻿using System;
+﻿using battleships_xtreme_2k19.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,6 +36,19 @@ namespace battleships_xtreme_2k19
         {
             Home.Visibility = Visibility.Hidden;
             Options.Visibility = Visibility.Visible;
+        }
+
+        private void BtnConfirmMapSize_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                int size = Int32.Parse(this.mapSize.Text);
+                Map map = new Map(size);
+            }
+            catch (FormatException exception)
+            {
+                Console.WriteLine(exception.Message);
+            }            
         }
     }
 }

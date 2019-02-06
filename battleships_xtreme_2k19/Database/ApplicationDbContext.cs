@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace battleships_xtreme_2k19.Database
 {
-    public class ApplicationDbContext
+    public class ApplicationDbContext : DbContext
     {
 
         #region StaticVariables

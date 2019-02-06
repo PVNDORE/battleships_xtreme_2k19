@@ -42,6 +42,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
+            <Button x:Name="btnReturnHomeOpt" Grid.Column="0" Grid.Row="0" Click="BtnReturnHomeOpt_Click">Home</Button>
             <TextBlock x:Name="titleMapSize" Grid.Column="1" Grid.Row="1">choose a map size</TextBlock>
             <TextBox x:Name="mapSize" Grid.Column="1" Grid.Row="2"/>
             <Button x:Name="btnConfirmMapSize" Grid.Column="1" Grid.Row="3" Click="BtnConfirmMapSize_Click">Confirm</Button>

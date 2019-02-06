@@ -21,11 +21,39 @@ namespace battleships_xtreme_2k19
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        #region StaticVariables
+        #endregion
+
+        #region Constants
+        #endregion
+
+        #region Variables
+        #endregion
+
+        #region Attributs
+        #endregion
+
+        #region Properties
+        #endregion
+
+        #region Constructors
+        /// <summary>
+        /// Default constructor.
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
         }
+        #endregion
 
+        #region StaticFunctions
+        #endregion
+
+        #region Functions
+        #endregion
+
+        #region Events
         private void BtnPlay_Click(object sender, RoutedEventArgs e)
         {
             Home.Visibility = Visibility.Hidden;
@@ -48,7 +76,16 @@ namespace battleships_xtreme_2k19
             catch (FormatException exception)
             {
                 Console.WriteLine(exception.Message);
-            }            
+            }
         }
+
+        private void BtnReturnHomeOpt_Click(object sender, RoutedEventArgs e)
+        {
+            Options.Visibility = Visibility.Hidden;
+            Home.Visibility = Visibility.Visible;
+        }
+        #endregion
+
+
     }
 }

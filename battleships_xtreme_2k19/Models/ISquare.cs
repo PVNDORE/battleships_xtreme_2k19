@@ -36,6 +36,7 @@ namespace battleships_xtreme_2k19.Models
         bool IsWater();
         bool GotTargeted();
         int SquareValue();
+        String GetString();
         #endregion
 
         #region Events

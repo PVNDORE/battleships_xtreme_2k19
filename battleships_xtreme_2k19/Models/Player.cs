@@ -20,25 +20,20 @@ namespace battleships_xtreme_2k19.Models
 
         #region Attributs
         private String name;
-        private Map mapPlacement;
-        private Map mapTarget;
+        private Map playerMap;
+        
         #endregion
 
         #region Properties
-        public Map MapTarget
-        {
-            get { return mapTarget; }
-            set { mapTarget = value; }
-        }
         public String Name
         {
             get { return name; }
             set { name = value; }
         }
-        public Map MapPlacement
+        public Map PlayerMap
         {
-            get { return mapPlacement; }
-            set { mapPlacement = value; }
+            get { return playerMap; }
+            set { playerMap = value; }
         }
         #endregion
 
@@ -46,9 +41,9 @@ namespace battleships_xtreme_2k19.Models
         /// <summary>
         /// Default constructor.
         /// </summary>
-        public Player()
+        public Player(String name)
         {
-
+            this.name = name;
         }
         #endregion
 

@@ -17,17 +17,21 @@ namespace battleships_xtreme_2k19.Models
 
         #region Variables
         #endregion
-
         #region Attributs
         private ShipType shipType;
         private int width;
         private int height;
         private bool isSink;
         private List<Position> shipPositions;
-        
+        private int value;
         #endregion
 
         #region Properties
+        public int Value
+        {
+            get { return value; }
+            set { value = value; }
+        }
         public bool IsSink
         {
             get { return isSink; }
@@ -59,12 +63,27 @@ namespace battleships_xtreme_2k19.Models
         /// <summary>
         /// Default constructor.
         /// </summary>
-        public Ship(ShipType shipType, int width, int height, bool isSink)
+        public Ship(ShipType shipType, int width, int height, bool isSink, int value)
         {
             this.shipType = shipType;
             this.width = width;
             this.height = height;
             this.isSink = isSink;
+            switch (shipType)
+            {
+                case "Carrier":
+                    this.Value = 4;
+                    break;
+                case "Battleship":
+                    this.Value = 3;
+                    break;
+                case "Submarine":
+                    this.Value = 2;
+                    break;
+                case "Destroyer":
+                    this.Value = 1;
+                    break;
+            }
         }
         #endregion
 

@@ -60,6 +60,25 @@ namespace battleships_xtreme_2k19.Models
         #endregion
 
         #region Functions
+        public override string ToString()
+        {
+            String str = "";
+            for (int i = 0; i < this.size; i++)
+            {
+                for (int j = 0; j <= this.size; j++)
+                {
+                    if (j == (this.size))
+                    {
+                        str = str + "\n";
+                    }
+                    else
+                    {
+                        str = str + ocean[i][j].GetString();
+                    }
+                }
+            }
+            return str;
+        }
         #endregion
 
         #region Events

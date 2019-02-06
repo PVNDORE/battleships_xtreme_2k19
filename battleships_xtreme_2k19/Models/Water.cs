@@ -59,6 +59,11 @@ namespace battleships_xtreme_2k19.Models
         {
             return 0;
         }
+
+        public string GetString()
+        {
+            return "0 ";
+        }
         #endregion
 
         #region StaticFunctions

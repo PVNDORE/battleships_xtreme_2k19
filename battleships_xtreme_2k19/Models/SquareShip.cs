@@ -20,7 +20,7 @@ namespace battleships_xtreme_2k19.Models
         #region Attributs
         private bool targeted;
         private Position coordonates;
-        private int shipNumber;
+        private int shipValue;
         #endregion
 
         #region Properties
@@ -34,10 +34,10 @@ namespace battleships_xtreme_2k19.Models
             get { return coordonates; }
             set { coordonates = value; }
         }
-        public int ShipNumber
+        public int ShipValue
         {
-            get { return shipNumber; }
-            set { shipNumber = value; }
+            get { return shipValue; }
+            set { shipValue = value; }
         }
         #endregion
 
@@ -45,11 +45,11 @@ namespace battleships_xtreme_2k19.Models
         /// <summary>
         /// Default constructor.
         /// </summary>
-        public SquareShip(bool targeted, Position coordonates, int shipNumber)
+        public SquareShip(bool targeted, Position coordonates, int shipValue)
         {
             this.targeted = targeted;
             this.coordonates = coordonates;
-            this.shipNumber = shipNumber;
+            this.shipValue = shipValue;
         }
 
         public bool GotTargeted()
@@ -64,8 +64,13 @@ namespace battleships_xtreme_2k19.Models
 
         public int SquareValue()
         {
-            return this.ShipNumber;
+            return this.ShipValue;
         }
+        public string GetString()
+        {
+            return this.shipValue+" ";
+        }
+
         #endregion
 
         #region StaticFunctions

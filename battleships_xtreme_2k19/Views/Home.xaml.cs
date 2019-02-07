@@ -1,6 +1,4 @@
-﻿using battleships_xtreme_2k19.Database;
-using battleships_xtreme_2k19.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,9 +16,9 @@ using System.Windows.Shapes;
 namespace battleships_xtreme_2k19.Views
 {
     /// <summary>
-    /// Logique d'interaction pour MainWindow.xaml
+    /// Logique d'interaction pour Home.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Home : Page
     {
 
         #region StaticVariables
@@ -42,10 +40,9 @@ namespace battleships_xtreme_2k19.Views
         /// <summary>
         /// Default constructor.
         /// </summary>
-        public MainWindow()
+        public Home()
         {
             InitializeComponent();
-            this.Content = new Home();
         }
         #endregion
 
@@ -56,7 +53,10 @@ namespace battleships_xtreme_2k19.Views
         #endregion
 
         #region Events
+        private void BtnPlay_Click(object sender, RoutedEventArgs e)
+        {
+            (this.Parent as Window).Content = new ConfigureMap();
+        }
         #endregion
-               
     }
 }

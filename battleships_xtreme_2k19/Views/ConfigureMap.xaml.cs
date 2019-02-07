@@ -18,9 +18,9 @@ using System.Windows.Shapes;
 namespace battleships_xtreme_2k19.Views
 {
     /// <summary>
-    /// Logique d'interaction pour MainWindow.xaml
+    /// Logique d'interaction pour ConfigureMap.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ConfigureMap : Page
     {
 
         #region StaticVariables
@@ -42,10 +42,9 @@ namespace battleships_xtreme_2k19.Views
         /// <summary>
         /// Default constructor.
         /// </summary>
-        public MainWindow()
+        public ConfigureMap()
         {
             InitializeComponent();
-            this.Content = new Home();
         }
         #endregion
 
@@ -56,7 +55,30 @@ namespace battleships_xtreme_2k19.Views
         #endregion
 
         #region Events
+        private void BtnConfirmMapSize_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                int size = Int32.Parse(this.mapSize.Text);
+                Map map = new Map(size);
+                using (var db = new ApplicationDbContext())
+                {
+                    db.MapDbSet.Add(map);
+
+                    db.SaveChanges();
+
+                    System.Console.WriteLine("--------------------");
+
+                    System.Console.WriteLine(map.ToString());
+                }
+
+                // (this.Parent as Window).Content = new ConfigureShips();
+            }
+            catch (FormatException exception)
+            {
+                Console.WriteLine(exception.Message);
+            }
+        }
         #endregion
-               
     }
 }

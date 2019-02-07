@@ -1,5 +1,4 @@
-﻿using battleships_xtreme_2k19.Database;
-using battleships_xtreme_2k19.Models;
+﻿using battleships_xtreme_2k19.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +17,9 @@ using System.Windows.Shapes;
 namespace battleships_xtreme_2k19.Views
 {
     /// <summary>
-    /// Logique d'interaction pour MainWindow.xaml
+    /// Logique d'interaction pour ConfigureShips.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ConfigureShips : Page
     {
 
         #region StaticVariables
@@ -42,10 +41,9 @@ namespace battleships_xtreme_2k19.Views
         /// <summary>
         /// Default constructor.
         /// </summary>
-        public MainWindow()
+        public ConfigureShips()
         {
             InitializeComponent();
-            this.Content = new Home();
         }
         #endregion
 
@@ -56,7 +54,26 @@ namespace battleships_xtreme_2k19.Views
         #endregion
 
         #region Events
+        private void BtnConfirmShip1_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                int size = Int32.Parse(this.Ship1Height.Text);
+                Map map = new Map(size);
+
+                int height = Int32.Parse(this.Ship1Height.Text);
+                int width = Int32.Parse(this.Ship1Width.Text);
+
+                Ship ship1 = new Ship(0, width, height, false);
+
+            }
+            catch (FormatException exception)
+            {
+                Console.WriteLine(exception.Message);
+            }
+        }
         #endregion
-               
+
+
     }
 }

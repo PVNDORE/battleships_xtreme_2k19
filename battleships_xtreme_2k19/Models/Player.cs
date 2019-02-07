@@ -41,8 +41,9 @@ namespace battleships_xtreme_2k19.Models
         /// <summary>
         /// Default constructor.
         /// </summary>
-        public Player(String name)
+        public Player(String name, Map map)
         {
+            this.PlayerMap = map;
             this.name = name;
         }
         #endregion

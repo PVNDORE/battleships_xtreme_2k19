@@ -33,9 +33,16 @@ namespace battleships_xtreme_2k19.Views
         #endregion
 
         #region Attributs
+        private int mapSize;
+
         #endregion
 
         #region Properties
+        public int MapSize
+        {
+            get { return mapSize; }
+            set { mapSize = value; }
+        }
         #endregion
 
         #region Constructors
@@ -69,6 +76,9 @@ namespace battleships_xtreme_2k19.Views
 
                 System.Console.WriteLine(map.ToString());
             }
+
+            ConfigData configData = new ConfigData();
+            configData.Map = map;
 
             // vérifier que map existe
             (this.Parent as Window).Content = new ConfigureShips();

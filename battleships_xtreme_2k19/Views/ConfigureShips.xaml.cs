@@ -32,9 +32,16 @@ namespace battleships_xtreme_2k19.Views
         #endregion
 
         #region Attributs
+        private List<Ship> ships;
+        
         #endregion
 
         #region Properties
+        public List<Ship> Ships
+        {
+            get { return ships; }
+            set { ships = value; }
+        }
         #endregion
 
         #region Constructors
@@ -58,14 +65,13 @@ namespace battleships_xtreme_2k19.Views
         {
             try
             {
-                int size = Int32.Parse(this.Ship1Height.Text);
+                int size = 10;
                 Map map = new Map(size);
 
-                int height = Int32.Parse(this.Ship1Height.Text);
-                int width = Int32.Parse(this.Ship1Width.Text);
-
-                Ship ship1 = new Ship(0, width, height, false);
-
+                int heightCarrier = Int32.Parse(this.CarrierHeight.Text);
+                int widthCarrier = Int32.Parse(this.CarrierWidth.Text);
+                Ship carrier = new Ship(0, widthCarrier, heightCarrier, false);
+                
             }
             catch (FormatException exception)
             {

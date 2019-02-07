@@ -71,16 +71,16 @@ namespace battleships_xtreme_2k19.Models
             this.isSink = isSink;
             switch (shipType)
             {
-                case "Carrier":
+                case ShipType.Carrier:
                     this.Value = 4;
                     break;
-                case "Battleship":
+                case ShipType.Battleship:
                     this.Value = 3;
                     break;
-                case "Submarine":
+                case ShipType.Submarine:
                     this.Value = 2;
                     break;
-                case "Destroyer":
+                case ShipType.Destroyer:
                     this.Value = 1;
                     break;
             }

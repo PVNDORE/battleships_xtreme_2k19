@@ -58,7 +58,9 @@ namespace battleships_xtreme_2k19
         private void BtnPlay_Click(object sender, RoutedEventArgs e)
         {
             Home.Visibility = Visibility.Hidden;
-            Play.Visibility = Visibility.Visible;
+            // pour dev
+            OptionsShips.Visibility = Visibility.Visible;
+            // Play.Visibility = Visibility.Visible;
         }
 
         private void BtnOptions_Click(object sender, RoutedEventArgs e)
@@ -94,6 +96,9 @@ namespace battleships_xtreme_2k19
         }
         #endregion
 
+        private void BtnConfirmShip1_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
     }
 }

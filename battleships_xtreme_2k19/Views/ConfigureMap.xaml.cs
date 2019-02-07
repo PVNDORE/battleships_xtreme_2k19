@@ -70,6 +70,9 @@ namespace battleships_xtreme_2k19.Views
                     System.Console.WriteLine("--------------------");
 
                     System.Console.WriteLine(map.ToString());
+                    Configure configure = new Configure();
+                    configure.Map = map;
+
                 }
 
                 // (this.Parent as Window).Content = new ConfigureShips();

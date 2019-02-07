@@ -1,4 +1,5 @@
-﻿using battleships_xtreme_2k19.Models;
+﻿using battleships_xtreme_2k19.Database;
+using battleships_xtreme_2k19.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -72,6 +73,13 @@ namespace battleships_xtreme_2k19
             {
                 int size = Int32.Parse(this.mapSize.Text);
                 Map map = new Map(size);
+                using (var db = new ApplicationDbContext())
+                {
+                    db.MapDbSet.Add(map);
+
+                    db.SaveChanges();
+
+                }
             }
             catch (FormatException exception)
             {

@@ -19,7 +19,7 @@ namespace battleships_xtreme_2k19.Views
     /// <summary>
     /// Logique d'interaction pour Page1.xaml
     /// </summary>
-    public partial class Configure : Page
+    public partial class ConfigData : Page
     {
 
         #region StaticVariables
@@ -47,7 +47,7 @@ namespace battleships_xtreme_2k19.Views
         /// <summary>
         /// Default constructor.
         /// </summary>
-        public Configure()
+        public ConfigData()
         {
             
         }

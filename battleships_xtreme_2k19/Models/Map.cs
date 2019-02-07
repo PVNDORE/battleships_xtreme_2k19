@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,7 @@ namespace battleships_xtreme_2k19.Models
         #region Attributs
         private int size;
         public ISquare[,] Ocean;
+        public long id;
         #endregion
 
         #region Properties
@@ -30,12 +32,23 @@ namespace battleships_xtreme_2k19.Models
             get { return size; }
             set { size = value; }
         }
+
+        [Key]
+        public long Id
+        {
+            get { return id;  }
+            set { id = value; }
+        }
         #endregion
 
         #region Constructors
         /// <summary>
         /// Default constructor.
         /// </summary>
+        public Map()
+        {
+            
+        }
         public Map(int size)
         {
             this.Ocean = new ISquare[size, size];

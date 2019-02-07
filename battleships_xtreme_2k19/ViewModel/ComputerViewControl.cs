@@ -59,6 +59,7 @@ namespace battleships_xtreme_2k19.ViewModel
                                         break;
                                     }
                                 }
+                                shipPlacement = true;
                             }
                         }
                     }
@@ -88,6 +89,7 @@ namespace battleships_xtreme_2k19.ViewModel
                                         break;
                                     }
                                 }
+                                shipPlacement = true;
                             }
                         }
                     }
@@ -102,15 +104,18 @@ namespace battleships_xtreme_2k19.ViewModel
         public static void IATargetFire(Player player)
         {
             Random rand = new Random();
-            int x = rand.Next(player.PlayerMap.Size);
-            int y = rand.Next(1, player.PlayerMap.Size + 1);
-            for (int i = 0; i < player.PlayerMap.Size; i++)
+            bool process = true;
+            while (process)
             {
-                for (int j = 1; j < player.PlayerMap.Size; j++)
+                int x = rand.Next(player.PlayerMap.Size);
+                int y = rand.Next(player.PlayerMap.Size);
+                if (player.PlayerMap.Ocean[x, y].GotTargeted() == false)
                 {
-                    
+                    player.PlayerMap.Ocean[x, x].Targeted = true;
+                    process = false;
                 }
             }
+            
         }
         #endregion
 

@@ -37,7 +37,7 @@ namespace battleships_xtreme_2k19.Models
         /// <summary>
         /// Default constructor.
         /// </summary>
-        public Computer(Difficulty computerDifficulty, String name, Map map) : base (name, map)
+        public Computer(Difficulty computerDifficulty, String name, Map map, List<Ship> ships) : base (name, map, ships)
         {
             this.computerDifficulty = computerDifficulty;
         }

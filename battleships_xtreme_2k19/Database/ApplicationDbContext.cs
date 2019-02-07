@@ -44,11 +44,19 @@ namespace battleships_xtreme_2k19.Database
         /// </summary>
         public ApplicationDbContext()
         {
-
+            DevResetDatabase();
         }
         #endregion
 
         #region StaticFunctions
+        private void DevResetDatabase()
+        {
+            if (!this.Database.CompatibleWithModel(false))
+            {
+                this.Database.Delete();
+                this.Database.Create();
+            }
+        }
         #endregion
 
         #region Functions

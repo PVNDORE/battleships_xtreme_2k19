@@ -83,6 +83,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Database\ApplicationDbContext.cs" />
+    <Compile Include="Models\Computer.cs" />
+    <Compile Include="Models\Difficulty.cs" />
+    <Compile Include="ViewModel\ComputerViewControl.cs" />
+    <Compile Include="ViewModel\PlayerViewControl.cs" />
     <Compile Include="Views\ConfigureMap.xaml.cs">
       <DependentUpon>ConfigureMap.xaml</DependentUpon>
     </Compile>
@@ -132,8 +136,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModel\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

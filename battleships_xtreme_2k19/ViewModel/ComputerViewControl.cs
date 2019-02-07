@@ -31,7 +31,7 @@ namespace battleships_xtreme_2k19.ViewModel
                 while (shipPlacement == false)
                 {
                     int x = rand.Next(computer.PlayerMap.Size);
-                    int y = rand.Next(1, computer.PlayerMap.Size + 1);
+                    int y = rand.Next(computer.PlayerMap.Size);
                     int direction = rand.Next(2);
                     if (direction == 0)
                     {
@@ -43,10 +43,10 @@ namespace battleships_xtreme_2k19.ViewModel
                                 {
                                     for (int j = y; j < ship.Width + y; j++)
                                     {
-                                        if (map.Ocean[alphabet[i], j].IsWater())
+                                        if (map.Ocean[i, j].IsWater())
                                         {
                                             Position shipPosition = new Position(alphabet[i], j);
-                                            map.Ocean[alphabet[i], j] = new SquareShip(false, shipPosition, ship.ShipValue);
+                                            map.Ocean[i, j] = new SquareShip(false, shipPosition, ship.ShipValue);
                                         }
                                         else
                                         {
@@ -59,6 +59,7 @@ namespace battleships_xtreme_2k19.ViewModel
                                         break;
                                     }
                                 }
+                                shipPlacement = true;
                             }
                         }
                     }
@@ -72,10 +73,10 @@ namespace battleships_xtreme_2k19.ViewModel
                                 {
                                     for (int j = y; j < ship.Width + y; j++)
                                     {
-                                        if (map.Ocean[alphabet[i], j].IsWater())
+                                        if (map.Ocean[i, j].IsWater())
                                         {
                                             Position shipPosition = new Position(alphabet[i], j);
-                                            map.Ocean[alphabet[i], j] = new SquareShip(false, shipPosition, ship.ShipValue);
+                                            map.Ocean[i, j] = new SquareShip(false, shipPosition, ship.ShipValue);
                                         }
                                         else
                                         {
@@ -88,6 +89,7 @@ namespace battleships_xtreme_2k19.ViewModel
                                         break;
                                     }
                                 }
+                                shipPlacement = true;
                             }
                         }
                     }
@@ -97,6 +99,23 @@ namespace battleships_xtreme_2k19.ViewModel
                     computer.PlayerMap = map;
                 }
             }
+        }
+
+        public static void IATargetFire(Player player)
+        {
+            Random rand = new Random();
+            bool process = true;
+            while (process)
+            {
+                int x = rand.Next(player.PlayerMap.Size);
+                int y = rand.Next(player.PlayerMap.Size);
+                if (player.PlayerMap.Ocean[x, y].GotTargeted() == false)
+                {
+                    player.PlayerMap.Ocean[x, x].Targeted = true;
+                    process = false;
+                }
+            }
+            
         }
         #endregion
 

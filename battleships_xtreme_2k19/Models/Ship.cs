@@ -63,7 +63,7 @@ namespace battleships_xtreme_2k19.Models
         /// <summary>
         /// Default constructor.
         /// </summary>
-        public Ship(ShipType shipType, int width, int height, bool isSink, int value)
+        public Ship(ShipType shipType, int width, int height, bool isSink)
         {
             this.shipType = shipType;
             this.width = width;

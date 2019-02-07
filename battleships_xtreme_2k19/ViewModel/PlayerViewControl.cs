@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace battleships_xtreme_2k19.ViewModel
 {
-    class PlayerViewControl
+    public static class PlayerViewControl
     {
 
         #region StaticVariables
@@ -19,48 +19,22 @@ namespace battleships_xtreme_2k19.ViewModel
         #region Variables
         #endregion
 
-        #region Attributs
-        private Player humanPlayer;
-        #endregion
-
-        #region Properties
-
-        public Player HumanPlayer
-        {
-            get { return humanPlayer; }
-            set { humanPlayer = value; }
-        }
-        #endregion
-
-        #region Constructors
-        /// <summary>
-        /// Default constructor.
-        /// </summary>
-        public PlayerViewControl(Player humanPlayer)
-        {
-            this.HumanPlayer = humanPlayer;
-                
-        }
-        #endregion
 
         #region StaticFunctions
-        #endregion
-
-        #region Functions
-        public bool ShipPlacement(Ship ship, List<Position> positions, Player player)
+        public static bool ShipPlacement(Ship ship, List<Position> positions, Player player)
         {
             String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             Map map = player.PlayerMap;
             foreach (var position in positions)
             {
-                for (int i = 0; i < this.humanPlayer.PlayerMap.Size; i++)
+                for (int i = 0; i < player.PlayerMap.Size; i++)
                 {
-                    for (int j = 1; j < this.humanPlayer.PlayerMap.Size; j++)
+                    for (int j = 1; j < player.PlayerMap.Size; j++)
                     {
-                        if (position.XPosition.Equals(alphabet[i]) && position.YPosition.Equals(j) && map.Ocean[alphabet[i],j].IsWater())
+                        if (position.XPosition.Equals(alphabet[i]) && position.YPosition.Equals(j) && map.Ocean[alphabet[i], j].IsWater())
                         {
                             Position coordonates = new Position(alphabet[i], j);
-                            map.Ocean[alphabet[i],j] = new SquareShip(false, coordonates, ship.ShipValue);
+                            map.Ocean[alphabet[i], j] = new SquareShip(false, coordonates, ship.ShipValue);
                         }
                         else if (position.XPosition.Equals(alphabet[i]) && position.YPosition.Equals(j) && map.Ocean[alphabet[i], j].IsWater() == false)
                         {
@@ -73,7 +47,7 @@ namespace battleships_xtreme_2k19.ViewModel
             return true;
         }
 
-        public String TargetFire(Position position, Computer computer)
+        public static String TargetFire(Position position, Computer computer)
         {
             String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             Map map = computer.PlayerMap;
@@ -81,7 +55,7 @@ namespace battleships_xtreme_2k19.ViewModel
             {
                 for (int j = 1; j < computer.PlayerMap.Size; j++)
                 {
-                    if (position.XPosition.Equals(alphabet[i]) && position.YPosition.Equals(j) && map.Ocean[alphabet[i],j].GotTargeted() == false)
+                    if (position.XPosition.Equals(alphabet[i]) && position.YPosition.Equals(j) && map.Ocean[alphabet[i], j].GotTargeted() == false)
                     {
                         map.Ocean[alphabet[i], j].Targeted = true;
                         if (map.Ocean[alphabet[i], j].IsWater())
@@ -103,6 +77,9 @@ namespace battleships_xtreme_2k19.ViewModel
             }
             return "";
         }
+        #endregion
+
+        #region Functions
         #endregion
 
         #region Events

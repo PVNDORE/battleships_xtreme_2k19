@@ -21,7 +21,7 @@ namespace battleships_xtreme_2k19.Models
 
         #region Attributs
         private int size;
-        public ISquare[][] Ocean;
+        public ISquare[,] Ocean;
         #endregion
 
         #region Properties
@@ -38,6 +38,7 @@ namespace battleships_xtreme_2k19.Models
         /// </summary>
         public Map(int size)
         {
+            this.Ocean = new ISquare[size, size];
             string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             this.size = size;
             for (int i = 0; i < size; i++)
@@ -45,7 +46,7 @@ namespace battleships_xtreme_2k19.Models
                 for (int j = 1; j < size; j++)
                 {
                     Position coordonates = new Position(alphabet[i], j);
-                    this.Ocean[i][j] = new Water(false, coordonates);
+                    this.Ocean[i,j] = new Water(false, coordonates);
                 }
 
             }
@@ -69,7 +70,7 @@ namespace battleships_xtreme_2k19.Models
                     }
                     else
                     {
-                        str = str + this.Ocean[i][j].GetString();
+                        str = str + this.Ocean[i,j].GetString();
                     }
                 }
             }

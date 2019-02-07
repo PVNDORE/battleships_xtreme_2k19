@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace battleships_xtreme_2k19
+namespace battleships_xtreme_2k19.Views
 {
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
@@ -81,7 +81,29 @@ namespace battleships_xtreme_2k19
 
                     db.SaveChanges();
 
+                     System.Console.WriteLine("--------------------");
+                    
+                     System.Console.WriteLine(map.ToString());
                 }
+            }
+            catch (FormatException exception)
+            {
+                Console.WriteLine(exception.Message);
+            }
+        }
+
+        private void BtnConfirmShip1_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                int size = Int32.Parse(this.Ship1Height.Text);
+                Map map = new Map(size);
+
+                int height = Int32.Parse(this.Ship1Height.Text);
+                int width = Int32.Parse(this.Ship1Width.Text);
+
+                Ship ship1 = new Ship(0, width, height, false, 1);
+
             }
             catch (FormatException exception)
             {
@@ -95,10 +117,6 @@ namespace battleships_xtreme_2k19
             Home.Visibility = Visibility.Visible;
         }
         #endregion
-
-        private void BtnConfirmShip1_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+               
     }
 }

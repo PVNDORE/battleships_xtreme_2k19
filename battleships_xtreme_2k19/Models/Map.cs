@@ -56,12 +56,11 @@ namespace battleships_xtreme_2k19.Models
             this.size = size;
             for (int i = 0; i < size; i++)
             {
-                for (int j = 1; j < size; j++)
+                for (int j = 0; j < size; j++)
                 {
                     Position coordonates = new Position(alphabet[i], j);
                     this.Ocean[i,j] = new Water(false, coordonates);
                 }
-
             }
         }
         #endregion

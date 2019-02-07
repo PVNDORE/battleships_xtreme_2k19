@@ -29,14 +29,14 @@ namespace battleships_xtreme_2k19.ViewModel
             {
                 for (int i = 0; i < player.PlayerMap.Size; i++)
                 {
-                    for (int j = 1; j < player.PlayerMap.Size; j++)
+                    for (int j = 0; j < player.PlayerMap.Size; j++)
                     {
-                        if (position.XPosition.Equals(alphabet[i]) && position.YPosition.Equals(j) && map.Ocean[alphabet[i], j].IsWater())
+                        if (position.XPosition.Equals(alphabet[i]) && position.YPosition.Equals(j) && map.Ocean[i, j].IsWater())
                         {
                             Position coordonates = new Position(alphabet[i], j);
-                            map.Ocean[alphabet[i], j] = new SquareShip(false, coordonates, ship.ShipValue);
+                            map.Ocean[i, j] = new SquareShip(false, coordonates, ship.ShipValue);
                         }
-                        else if (position.XPosition.Equals(alphabet[i]) && position.YPosition.Equals(j) && map.Ocean[alphabet[i], j].IsWater() == false)
+                        else if (position.XPosition.Equals(alphabet[i]) && position.YPosition.Equals(j) && map.Ocean[i, j].IsWater() == false)
                         {
                             return false;
                         }
@@ -53,12 +53,12 @@ namespace battleships_xtreme_2k19.ViewModel
             Map map = computer.PlayerMap;
             for (int i = 0; i < computer.PlayerMap.Size; i++)
             {
-                for (int j = 1; j < computer.PlayerMap.Size; j++)
+                for (int j = 0; j < computer.PlayerMap.Size; j++)
                 {
-                    if (position.XPosition.Equals(alphabet[i]) && position.YPosition.Equals(j) && map.Ocean[alphabet[i], j].GotTargeted() == false)
+                    if (position.XPosition.Equals(alphabet[i]) && position.YPosition.Equals(j) && map.Ocean[i, j].GotTargeted() == false)
                     {
-                        map.Ocean[alphabet[i], j].Targeted = true;
-                        if (map.Ocean[alphabet[i], j].IsWater())
+                        map.Ocean[i, j].Targeted = true;
+                        if (map.Ocean[i, j].IsWater())
                         {
                             computer.PlayerMap = map;
                             return "Vous avez tiré dans l'eau.";
@@ -69,7 +69,7 @@ namespace battleships_xtreme_2k19.ViewModel
                             return "Vous avez touché un bateau!";
                         }
                     }
-                    else if (position.XPosition.Equals(alphabet[i]) && position.YPosition.Equals(j) && map.Ocean[alphabet[i], j].GotTargeted() == true)
+                    else if (position.XPosition.Equals(alphabet[i]) && position.YPosition.Equals(j) && map.Ocean[i, j].GotTargeted() == true)
                     {
                         return "Vous avez déjà tiré sur cette zone.";
                     }

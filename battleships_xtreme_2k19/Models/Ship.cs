@@ -23,14 +23,14 @@ namespace battleships_xtreme_2k19.Models
         private int height;
         private bool isSink;
         private List<Position> shipPositions;
-        private int value;
+        private int shipValue;
         #endregion
 
         #region Properties
-        public int Value
+        public int ShipValue
         {
-            get { return value; }
-            set { value = value; }
+            get { return shipValue; }
+            set { shipValue = value; }
         }
         public bool IsSink
         {
@@ -72,16 +72,16 @@ namespace battleships_xtreme_2k19.Models
             switch (shipType)
             {
                 case ShipType.Carrier:
-                    this.Value = 4;
+                    this.ShipValue = 4;
                     break;
                 case ShipType.Battleship:
-                    this.Value = 3;
+                    this.ShipValue = 3;
                     break;
                 case ShipType.Submarine:
-                    this.Value = 2;
+                    this.ShipValue = 2;
                     break;
                 case ShipType.Destroyer:
-                    this.Value = 1;
+                    this.ShipValue = 1;
                     break;
             }
         }

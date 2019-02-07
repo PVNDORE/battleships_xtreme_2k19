@@ -33,9 +33,15 @@ namespace battleships_xtreme_2k19.Views
         #endregion
 
         #region Attributs
+        private int mapSize;
         #endregion
 
         #region Properties
+        public int MapSize
+        {
+            get { return mapSize; }
+            set { mapSize = value; }
+        }
         #endregion
 
         #region Constructors
@@ -45,6 +51,7 @@ namespace battleships_xtreme_2k19.Views
         public ConfigureMap()
         {
             InitializeComponent();
+            this.DataContext = this;
         }
         #endregion
 
@@ -57,27 +64,20 @@ namespace battleships_xtreme_2k19.Views
         #region Events
         private void BtnConfirmMapSize_Click(object sender, RoutedEventArgs e)
         {
-            try
+            Map map = new Map(mapSize);
+            using (var db = new ApplicationDbContext())
             {
-                int size = Int32.Parse(this.mapSize.Text);
-                Map map = new Map(size);
-                using (var db = new ApplicationDbContext())
-                {
-                    db.MapDbSet.Add(map);
+                db.MapDbSet.Add(map);
 
-                    db.SaveChanges();
+                db.SaveChanges();
 
-                    System.Console.WriteLine("--------------------");
+                System.Console.WriteLine("--------------------");
 
-                    System.Console.WriteLine(map.ToString());
-                }
-
-                // (this.Parent as Window).Content = new ConfigureShips();
+                System.Console.WriteLine(map.ToString());
             }
-            catch (FormatException exception)
-            {
-                Console.WriteLine(exception.Message);
-            }
+
+            // vérifier que map existe
+            (this.Parent as Window).Content = new ConfigureShips();
         }
         #endregion
     }

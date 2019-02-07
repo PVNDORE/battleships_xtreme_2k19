@@ -33,10 +33,15 @@ namespace battleships_xtreme_2k19.Views
 
         #region Attributs
         private List<Ship> ships;
-        
+        private int mapSize;
         #endregion
 
         #region Properties
+        public int MapSize
+        {
+            get { return mapSize; }
+            set { mapSize = value; }
+        }
         public List<Ship> Ships
         {
             get { return ships; }
@@ -52,6 +57,11 @@ namespace battleships_xtreme_2k19.Views
         {
             InitializeComponent();
         }
+
+        public ConfigureShips(int mapSize)
+        {
+            this.mapSize = mapSize;
+        }
         #endregion
 
         #region StaticFunctions
@@ -65,13 +75,24 @@ namespace battleships_xtreme_2k19.Views
         {
             try
             {
-                int size = 10;
-                Map map = new Map(size);
 
                 int heightCarrier = Int32.Parse(this.CarrierHeight.Text);
                 int widthCarrier = Int32.Parse(this.CarrierWidth.Text);
-                Ship carrier = new Ship(0, widthCarrier, heightCarrier, false);
-                
+                int heightBattleship = Int32.Parse(this.BattleshipHeight.Text);
+                int widthBattleship = Int32.Parse(this.BattleshipWidth.Text);
+                int heightSubmarine = Int32.Parse(this.SubmarineHeight.Text);
+                int widthSubmarine = Int32.Parse(this.SubmarineWidth.Text);
+                int heightDestroyer = Int32.Parse(this.DestroyerHeight.Text);
+                int widthDestroyer = Int32.Parse(this.DestroyerWidth.Text);
+                Ship carrier = new Ship(ShipType.Carrier, widthCarrier, heightCarrier, false);
+                this.Ships.Add(carrier);
+                Ship battleship = new Ship(ShipType.Battleship, widthBattleship, heightBattleship, false);
+                this.Ships.Add(battleship);
+                Ship submarine = new Ship(ShipType.Submarine, widthSubmarine, heightSubmarine, false);
+                this.Ships.Add(submarine);
+                Ship destroyer = new Ship(ShipType.Destroyer, widthDestroyer, heightDestroyer, false);
+                this.Ships.Add(destroyer);
+                (this.Parent as Window).Content = new ShipPlacement(this.mapSize, this.Ships);
             }
             catch (FormatException exception)
             {

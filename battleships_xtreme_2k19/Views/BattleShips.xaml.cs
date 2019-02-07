@@ -17,9 +17,9 @@ using System.Windows.Shapes;
 namespace battleships_xtreme_2k19.Views
 {
     /// <summary>
-    /// Logique d'interaction pour Page1.xaml
+    /// Logique d'interaction pour BattleShips.xaml
     /// </summary>
-    public partial class ConfigData : Page
+    public partial class BattleShips : Page
     {
 
         #region StaticVariables
@@ -32,14 +32,21 @@ namespace battleships_xtreme_2k19.Views
         #endregion
 
         #region Attributs
-        private Map map;
+        private Player player;
+        private Computer computer;
+        
         #endregion
 
         #region Properties
-        public Map Map
+        public Player Player
         {
-            get { return map; }
-            set { map = value; }
+            get { return player; }
+            set { player = value; }
+        }
+        public Computer Computer
+        {
+            get { return computer; }
+            set { computer = value; }
         }
         #endregion
 
@@ -47,9 +54,14 @@ namespace battleships_xtreme_2k19.Views
         /// <summary>
         /// Default constructor.
         /// </summary>
-        public ConfigData()
+        public BattleShips()
         {
-            
+            InitializeComponent();
+        }
+        public BattleShips(Player player, Computer computer)
+        {
+            this.player = player;
+            this.computer = computer;
         }
         #endregion
 
@@ -62,8 +74,5 @@ namespace battleships_xtreme_2k19.Views
         #region Events
         #endregion
 
-
-
-        
     }
 }

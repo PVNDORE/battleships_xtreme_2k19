@@ -1,5 +1,4 @@
-﻿using battleships_xtreme_2k19.Database;
-using battleships_xtreme_2k19.Models;
+﻿using battleships_xtreme_2k19.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +17,9 @@ using System.Windows.Shapes;
 namespace battleships_xtreme_2k19.Views
 {
     /// <summary>
-    /// Logique d'interaction pour ConfigureMap.xaml
+    /// Logique d'interaction pour ShipPlacement.xaml
     /// </summary>
-    public partial class ConfigureMap : Page
+    public partial class ShipPlacement : Page
     {
 
         #region StaticVariables
@@ -34,7 +33,7 @@ namespace battleships_xtreme_2k19.Views
 
         #region Attributs
         private int mapSize;
-
+        private List<Ship> ships;
         #endregion
 
         #region Properties
@@ -43,16 +42,26 @@ namespace battleships_xtreme_2k19.Views
             get { return mapSize; }
             set { mapSize = value; }
         }
+        public List<Ship> Ships
+        {
+            get { return ships; }
+            set { ships = value; }
+        }
         #endregion
 
         #region Constructors
         /// <summary>
         /// Default constructor.
         /// </summary>
-        public ConfigureMap()
+        public ShipPlacement()
         {
             InitializeComponent();
-            this.DataContext = this;
+        }
+
+        public ShipPlacement(int mapSize, List<Ship> ships)
+        {
+            this.mapSize = mapSize;
+            this.ships = ships;
         }
         #endregion
 
@@ -63,24 +72,7 @@ namespace battleships_xtreme_2k19.Views
         #endregion
 
         #region Events
-        private void BtnConfirmMapSize_Click(object sender, RoutedEventArgs e)
-        {
-            Map map = new Map(mapSize);
-            using (var db = new ApplicationDbContext())
-            {
-                db.MapDbSet.Add(map);
-
-                db.SaveChanges();
-
-                System.Console.WriteLine("--------------------");
-
-                System.Console.WriteLine(map.ToString());
-            }
-            
-
-            // vérifier que map existe
-            (this.Parent as Window).Content = new ConfigureShips(this.mapSize);
-        }
         #endregion
+
     }
 }

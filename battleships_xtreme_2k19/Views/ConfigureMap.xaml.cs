@@ -65,20 +65,6 @@ namespace battleships_xtreme_2k19.Views
         #region Events
         private void BtnConfirmMapSize_Click(object sender, RoutedEventArgs e)
         {
-            Map map = new Map(mapSize);
-            using (var db = new ApplicationDbContext())
-            {
-                db.MapDbSet.Add(map);
-
-                db.SaveChanges();
-
-                System.Console.WriteLine("--------------------");
-
-                System.Console.WriteLine(map.ToString());
-            }
-            
-
-            // vérifier que map existe
             (this.Parent as Window).Content = new ConfigureShips(this.mapSize);
         }
         #endregion

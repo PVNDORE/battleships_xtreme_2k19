@@ -39,7 +39,7 @@ namespace battleships_xtreme_2k19.UserControl
         private String direction;
         private String color;
         private Ship shipSelected;
-        
+        private String btnName;
         #endregion
 
         #region Properties
@@ -63,6 +63,11 @@ namespace battleships_xtreme_2k19.UserControl
             get { return square; }
             set { square = value; }
         }
+        public String BtnName
+        {
+            get { return btnName; }
+            set { btnName = value; }
+        }
         #endregion
 
         #region Constructors
@@ -76,6 +81,7 @@ namespace battleships_xtreme_2k19.UserControl
             this.Square = square;
             this.X = x;
             this.Y = y;
+            this.BtnName = x.ToString() + "." +  y.ToString();
             if (Square.IsWater())
             {
                 this.Color = "Blue";

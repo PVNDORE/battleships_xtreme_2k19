@@ -235,7 +235,7 @@ namespace battleships_xtreme_2k19.Views
                 }
                 if (ship.ShipType == ShipType.Battleship)
                 {
-                    if (PlayerViewControl.ShipPlacement(ship, BatlleShipX, BatlleShipY, player))
+                    if (PlayerViewControl.ShipPlacement(ship, BattleShipX, BattleShipY, player))
                     {
                         shipPlacement = true;
                     }

@@ -32,11 +32,25 @@ namespace battleships_xtreme_2k19.Views
         #endregion
 
         #region Attributs
+        private int carrierWidth;
+        private int carrierHeight;
         private List<Ship> ships;
         private int mapSize;
         #endregion
 
         #region Properties
+        public int CarrierWidth
+        {
+            get { return carrierWidth; }
+            set { carrierWidth = value; }
+        }
+
+        public int CarrierHeight
+        {
+            get { return carrierHeight; }
+            set { carrierHeight = value; }
+        }
+
         public int MapSize
         {
             get { return mapSize; }
@@ -55,11 +69,13 @@ namespace battleships_xtreme_2k19.Views
         /// </summary>
         public ConfigureShips()
         {
-            InitializeComponent();
+            
         }
 
         public ConfigureShips(int mapSize)
         {
+            InitializeComponent();
+            this.DataContext = this;
             this.mapSize = mapSize;
         }
         #endregion
@@ -73,31 +89,19 @@ namespace battleships_xtreme_2k19.Views
         #region Events
         private void BtnConfirmShip1_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
 
-                int heightCarrier = Int32.Parse(this.CarrierHeight.Text);
-                int widthCarrier = Int32.Parse(this.CarrierWidth.Text);
-                int heightBattleship = Int32.Parse(this.BattleshipHeight.Text);
-                int widthBattleship = Int32.Parse(this.BattleshipWidth.Text);
-                int heightSubmarine = Int32.Parse(this.SubmarineHeight.Text);
-                int widthSubmarine = Int32.Parse(this.SubmarineWidth.Text);
-                int heightDestroyer = Int32.Parse(this.DestroyerHeight.Text);
-                int widthDestroyer = Int32.Parse(this.DestroyerWidth.Text);
-                Ship carrier = new Ship(ShipType.Carrier, widthCarrier, heightCarrier, false);
-                this.Ships.Add(carrier);
-                Ship battleship = new Ship(ShipType.Battleship, widthBattleship, heightBattleship, false);
-                this.Ships.Add(battleship);
-                Ship submarine = new Ship(ShipType.Submarine, widthSubmarine, heightSubmarine, false);
-                this.Ships.Add(submarine);
-                Ship destroyer = new Ship(ShipType.Destroyer, widthDestroyer, heightDestroyer, false);
-                this.Ships.Add(destroyer);
-                (this.Parent as Window).Content = new ShipPlacement(this.mapSize, this.Ships);
-            }
-            catch (FormatException exception)
-            {
-                Console.WriteLine(exception.Message);
-            }
+            Ship carrier = new Ship(ShipType.Carrier, carrierWidth, carrierHeight, false);
+            this.Ships.Add(carrier);
+
+            //Ship battleship = new Ship(ShipType.Battleship, widthBattleship, heightBattleship, false);
+            //this.Ships.Add(battleship);
+            //Ship submarine = new Ship(ShipType.Submarine, widthSubmarine, heightSubmarine, false);
+            //this.Ships.Add(submarine);
+            //Ship destroyer = new Ship(ShipType.Destroyer, widthDestroyer, heightDestroyer, false);
+            //this.Ships.Add(destroyer);
+
+            (this.Parent as Window).Content = new ShipPlacement(this.mapSize, this.Ships);
+        
         }
         #endregion
 

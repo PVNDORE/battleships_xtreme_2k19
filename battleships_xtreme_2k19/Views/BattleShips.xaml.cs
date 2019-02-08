@@ -61,6 +61,8 @@ namespace battleships_xtreme_2k19.Views
         }
         public BattleShips(Player player, Computer computer)
         {
+            InitializeComponent();
+            this.DataContext = this;
             this.player = player;
             this.computer = computer;
             GeneratePlayerMap();

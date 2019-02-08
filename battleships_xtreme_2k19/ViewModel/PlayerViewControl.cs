@@ -36,6 +36,8 @@ namespace battleships_xtreme_2k19.ViewModel
                         {
                             for (int j = y; j < ship.Width + y; j++)
                             {
+                                Console.WriteLine("i: " + i);
+                                Console.WriteLine("j: " + j);
                                 if (map.Ocean[i, j].IsWater())
                                 {
                                     Position shipPosition = new Position(alphabet[i], j);
@@ -87,6 +89,7 @@ namespace battleships_xtreme_2k19.ViewModel
                     }
                 }
             }
+            Console.WriteLine("shipPlacement: " + shipPlacement);
             return shipPlacement;
         }
 

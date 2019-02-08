@@ -135,16 +135,18 @@ namespace battleships_xtreme_2k19.Views
         private void BtnConfirmShips_Click(object sender, RoutedEventArgs e)
         {
             // Carrier
-            Ship carrier = new Ship(ShipType.Carrier, carrierWidth, carrierHeight, false);
+            Console.WriteLine("CarrierWidth: "+this.CarrierWidth);
+            Console.WriteLine("CarrierHeight: " + this.CarrierHeight);
+            Ship carrier = new Ship(ShipType.Carrier, this.CarrierWidth, this.CarrierHeight, false);
             this.Ships.Add(carrier);
             // Battleship
-            Ship battleship = new Ship(ShipType.Battleship, battleshipWidth, battleshipHeight, false);
+            Ship battleship = new Ship(ShipType.Battleship, this.BattleshipWidth, this.BattleshipHeight, false);
             this.Ships.Add(battleship);
             // Submarine
-            Ship submarine = new Ship(ShipType.Submarine, submarineWidth, submarineHeight, false);
+            Ship submarine = new Ship(ShipType.Submarine, this.SubmarineWidth, this.SubmarineHeight, false);
             this.Ships.Add(submarine);
             // Destroyer
-            Ship destroyer = new Ship(ShipType.Destroyer, destroyerWidth, destroyerHeight, false);
+            Ship destroyer = new Ship(ShipType.Destroyer, this.DestroyerWidth, this.DestroyerHeight, false);
             this.Ships.Add(destroyer);
             
             (this.Parent as Window).Content = new ShipPlacement(this.mapSize, this.Ships);

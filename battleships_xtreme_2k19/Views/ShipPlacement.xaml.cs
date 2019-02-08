@@ -201,29 +201,21 @@ namespace battleships_xtreme_2k19.Views
         #region Events
         private void BtnConfirmShipPlacement_Click(object sender, RoutedEventArgs e)
         {
-            using (var db = new ApplicationDbContext())
-            {
-                db.MapDbSet.Add(this.map);
-
-                db.SaveChanges();
-
-                System.Console.WriteLine("--------------------");
-
-                System.Console.WriteLine(this.map.ToString());
-            }
-
-            Map playerMap = new Map();
-            Map computerMap = new Map();
+            Map playerMap = this.Map;
+            Map computerMap = this.Map;
             Player player = new Player(playerMap, this.Ships);
             Computer computer = new Computer(Difficulty.easy, computerMap, this.Ships);
             ComputerViewControl.ShipPlacement(computer);
+            System.Console.WriteLine(computer.PlayerMap.ToString());
             bool shipPlacement = false;
+            Console.WriteLine("test2");
             foreach (var ship in Ships)
             {
                 if (ship.ShipType == ShipType.Carrier)
                 {
                     if (PlayerViewControl.ShipPlacement(ship, CarrierX, CarrierY, player, CarrierDirection))
                     {
+                        Console.WriteLine("CarrierY: "+CarrierY);
                         shipPlacement = true;
                     }
                     else
@@ -237,6 +229,7 @@ namespace battleships_xtreme_2k19.Views
                     if (PlayerViewControl.ShipPlacement(ship, BattleShipX, BattleShipY, player, BattleShipDirection))
                     {
                         shipPlacement = true;
+                        Console.WriteLine("CarrierY: " + BattleShipY);
                     }
                     else
                     {
@@ -249,6 +242,7 @@ namespace battleships_xtreme_2k19.Views
                     if (PlayerViewControl.ShipPlacement(ship, SubmarineX, SubmarineY, player, SubmarineDirection))
                     {
                         shipPlacement = true;
+                        Console.WriteLine("CarrierY: " + SubmarineY);
                     }
                     else
                     {
@@ -261,6 +255,7 @@ namespace battleships_xtreme_2k19.Views
                     if (PlayerViewControl.ShipPlacement(ship, DestroyerX, DestroyerY, player, DestroyerDirection))
                     {
                         shipPlacement = true;
+                        Console.WriteLine("CarrierY: " + DestroyerY);
                     }
                     else
                     {
@@ -270,6 +265,16 @@ namespace battleships_xtreme_2k19.Views
                 }
 
                 
+            }
+            using (var db = new ApplicationDbContext())
+            {
+                db.MapDbSet.Add(this.map);
+
+                db.SaveChanges();
+
+                System.Console.WriteLine("--------------------");
+
+                System.Console.WriteLine(this.map.ToString());
             }
             if (shipPlacement)
             {

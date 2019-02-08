@@ -223,7 +223,7 @@ namespace battleships_xtreme_2k19.Views
             {
                 if (ship.ShipType == ShipType.Carrier)
                 {
-                    if (PlayerViewControl.ShipPlacement(ship, CarrierX, CarrierY, player))
+                    if (PlayerViewControl.ShipPlacement(ship, CarrierX, CarrierY, player, CarrierDirection))
                     {
                         shipPlacement = true;
                     }
@@ -247,7 +247,7 @@ namespace battleships_xtreme_2k19.Views
                 }
                 if (ship.ShipType == ShipType.Submarine)
                 {
-                    if (PlayerViewControl.ShipPlacement(ship, SubmarineX, SubmarineY, player))
+                    if (PlayerViewControl.ShipPlacement(ship, SubmarineX, SubmarineY, player, SubmarineDirection))
                     {
                         shipPlacement = true;
                     }
@@ -259,7 +259,7 @@ namespace battleships_xtreme_2k19.Views
                 }
                 if (ship.ShipType == ShipType.Destroyer)
                 {
-                    if (PlayerViewControl.ShipPlacement(ship, DestroyerX, DestroyerY, player))
+                    if (PlayerViewControl.ShipPlacement(ship, DestroyerX, DestroyerY, player, DestroyerDirection))
                     {
                         shipPlacement = true;
                     }

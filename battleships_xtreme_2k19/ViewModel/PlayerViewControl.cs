@@ -21,12 +21,12 @@ namespace battleships_xtreme_2k19.ViewModel
 
 
         #region StaticFunctions
-        public static bool ShipPlacement(Ship ship, int x, int y, Player player, String direction)
+        public static bool ShipPlacement(Ship ship, int x, int y, Player player, bool direction)
         {
             bool shipPlacement = false;
             String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             Map map = player.PlayerMap;
-            if (direction == "Right")
+            if (direction == true)
             {
                 if (ship.Height + x < map.Size)
                 {

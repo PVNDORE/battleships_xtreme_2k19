@@ -32,21 +32,11 @@ namespace battleships_xtreme_2k19.Views
         #endregion
 
         #region Variables
-        public UserControl1 Uc1
-        {
-            get { return this.Uc1; }
-            set
-            {
-                this.Uc1 = value;
-            }
-        }
         #endregion
 
         #region Attributs
-
         private int mapSize;
         private List<Ship> ships;
-        Grid grid = new Grid();
         #endregion
 
         #region Properties
@@ -69,8 +59,6 @@ namespace battleships_xtreme_2k19.Views
         /// </summary>
         public ShipPlacement()
         {
-            InitializeComponent();
-            this.DataContext = this;
         }
 
         public ShipPlacement(int mapSize, List<Ship> ships)
@@ -79,7 +67,7 @@ namespace battleships_xtreme_2k19.Views
             this.DataContext = this;
             this.mapSize = mapSize;
             this.ships = ships;
-            this.Uc1.DataContext = this.Uc1;
+            this.GenerateMap();
         }
         #endregion
 
@@ -104,31 +92,24 @@ namespace battleships_xtreme_2k19.Views
                 RowDefinition row = new RowDefinition();
                 this.gameGrid.RowDefinitions.Add(row);
             }
-
-            Task.Factory.StartNew(() =>
+            this.map = new Map(MapSize);
+            for (int i = 0; i < MapSize; i++)
             {
-                Map map = new Map();
-                for (int i = 0; i < MapSize; i++)
+                for (int j = 0; j < MapSize; j++)
                 {
-                    for (int j = 0; j < MapSize; j++)
-                    {
-                        Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, new ThreadStart(delegate
-                        {
-                            UserControl1 uc1 = new UserControl1(map.Ocean[i,j]);
+                        UserControl1 uc1 = new UserControl1(this.map.Ocean[i,j], Ships);
 
-                            Grid.SetColumn(uc1, i);
-                            Grid.SetRow(uc1, j);
+                        Grid.SetColumn(uc1, i);
+                        Grid.SetRow(uc1, j);
 
-                            this.gameGrid.Children.Add(uc1);
-                        }));
-                    }
+                        this.gameGrid.Children.Add(uc1);
                 }
-            });
+            }
         }
         #endregion
 
         #region Events
-        #endregion
 
+        #endregion
     }
 }

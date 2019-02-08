@@ -1,4 +1,5 @@
 ﻿using battleships_xtreme_2k19.Models;
+using battleships_xtreme_2k19.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -47,7 +48,7 @@ namespace battleships_xtreme_2k19.UserControl
         /// <summary>
         /// Default constructor.
         /// </summary>
-        public UserControl1(ISquare square)
+        public UserControl1(ISquare square, List<Ship> ships)
         {
             InitializeComponent();
             this.DataContext = this;
@@ -65,7 +66,7 @@ namespace battleships_xtreme_2k19.UserControl
         #region Events
         private void Btn_Click(object sender, RoutedEventArgs e)
         {
-               
+            PlayerViewControl.ShipPlacement();
         }
         #endregion
 

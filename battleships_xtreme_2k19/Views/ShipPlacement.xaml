@@ -56,7 +56,7 @@
             <TextBlock x:Name="battleship" FontWeight="Bold" Grid.Row="2" Grid.Column="0">Battleship</TextBlock>
             <TextBox x:Name="BattleShipXtxt" Grid.Row="2" Grid.Column="1" Text="{Binding BattleShipX, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
             <TextBox x:Name="BattleShipYtxt" Grid.Row="2" Grid.Column="2" Text="{Binding BattleShipY, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-            <TextBox x:Name="Battleshipdirectiontxt" Grid.Row="2" Grid.Column="3" Text="{Binding BattleshipDirection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <TextBox x:Name="Battleshipdirectiontxt" Grid.Row="2" Grid.Column="3" Text="{Binding BattleShipDirection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
 
             <!-- Submarine -->
             <TextBlock x:Name="Submarine" FontWeight="Bold" Grid.Row="1" Grid.Column="4">Submarine</TextBlock>
@@ -68,7 +68,7 @@
             <TextBlock x:Name="Destroyer" FontWeight="Bold" Grid.Row="2" Grid.Column="4">Destroyer</TextBlock>
             <TextBox x:Name="DestroyerXtxt" Grid.Row="2" Grid.Column="5" Text="{Binding DestroyerX, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
             <TextBox x:Name="DestroyerYtxt" Grid.Row="2" Grid.Column="6" Text="{Binding DestroyerY, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-            <TextBox x:Name="Destroydirectiontxt" Grid.Row="2" Grid.Column="7" Text="{Binding DestroyDirection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <TextBox x:Name="Destroydirectiontxt" Grid.Row="2" Grid.Column="7" Text="{Binding DestroyerDirection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
         </Grid>
 
         <Grid x:Name="gameGrid" Grid.Row="1" Grid.Column="1"></Grid>

@@ -38,7 +38,8 @@ namespace battleships_xtreme_2k19.UserControl
         private int y;
         private String direction;
         private String color;
-       
+        private Ship shipSelected;
+        
         #endregion
 
         #region Properties
@@ -62,26 +63,28 @@ namespace battleships_xtreme_2k19.UserControl
             get { return square; }
             set { square = value; }
         }
-        public String Direction
-        {
-            get { return direction; }
-            set { direction = value; }
-        }
         #endregion
 
         #region Constructors
         /// <summary>
         /// Default constructor.
         /// </summary>
-        public UserControl1(ISquare square, List<Ship> ships, int x, int y)
+        public UserControl1(ISquare square, int x, int y)
         {
             InitializeComponent();
             this.DataContext = this;
             this.Square = square;
             this.X = x;
             this.Y = y;
-            this.Color = "Blue";
-            this.Direction = "";
+            if (Square.IsWater())
+            {
+                this.Color = "Blue";
+            }
+            else
+            {
+                this.Color = "Black";
+            }
+            
         }
         #endregion
 
@@ -94,10 +97,10 @@ namespace battleships_xtreme_2k19.UserControl
         #region Events
         private void Btn_Click(object sender, RoutedEventArgs e)
         {
-            this.Color = "Red";
-     //       String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-     //       Position position = new Position(alphabet[this.X], this.Y);
-     //       this.square = new SquareShip(false, position, 1);
+            String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            Position position = new Position(alphabet[this.X], this.Y);
+            this.square = new SquareShip(false, position, 1);
+            
         }
         #endregion
 

@@ -21,12 +21,10 @@ namespace battleships_xtreme_2k19.ViewModel
 
 
         #region StaticFunctions
-        public static bool ShipPlacement(Ship ship, List<Position> positions, Player player)
+        public static bool ShipPlacement(Ship ship, Position position, Player player, String direction)
         {
             String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             Map map = player.PlayerMap;
-            foreach (var position in positions)
-            {
                 for (int i = 0; i < player.PlayerMap.Size; i++)
                 {
                     for (int j = 0; j < player.PlayerMap.Size; j++)
@@ -42,7 +40,6 @@ namespace battleships_xtreme_2k19.ViewModel
                         }
                     }
                 }
-            }
             player.PlayerMap = map;
             return true;
         }

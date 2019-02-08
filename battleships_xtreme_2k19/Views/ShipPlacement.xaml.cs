@@ -39,9 +39,48 @@ namespace battleships_xtreme_2k19.Views
         private int mapSize;
         private List<Ship> ships;
         private Map map;
+        private Ship shipSelected;
+        private String carrierDirection;
+        private String batlleShipDirection;
+        private String submarineDirection;
+        private String destroyerDirection;
+        private Char carrierX;
+        private Char BatlleShipX;
+        private Char SubmarineX;
+        private Char DestroyerX;
         #endregion
 
         #region Properties
+        public Char BatlleShipX
+        {
+            get { return batlleShipX; }
+            set { batlleShipX = value; }
+        }
+        public Char CarrierX
+        {
+            get { return carrierX; }
+            set { carrierX = value; }
+        }
+        public String CarrierDirection
+        {
+            get { return carrierDirection; }
+            set { carrierDirection = value; }
+        }
+        public String BatlleShipDirection
+        {
+            get { return batlleShipDirection; }
+            set { batlleShipDirection = value; }
+        }
+        public String SubmarineDirection
+        {
+            get { return submarineDirection; }
+            set { submarineDirection = value; }
+        }
+        public String DestroyerDirection
+        {
+            get { return destroyerDirection; }
+            set { destroyerDirection = value; }
+        }
         public int MapSize
         {
             get { return mapSize; }
@@ -73,6 +112,8 @@ namespace battleships_xtreme_2k19.Views
             this.DataContext = this;
             this.MapSize = mapSize;
             this.Ships = ships;
+            
+            this.Map = new Map(MapSize);
             this.GenerateMap();
         }
         #endregion
@@ -98,19 +139,19 @@ namespace battleships_xtreme_2k19.Views
                 RowDefinition row = new RowDefinition();
                 this.gameGrid.RowDefinitions.Add(row);
             }
-            this.map = new Map(MapSize);
+            
             for (int i = 0; i < MapSize; i++)
             {
                 for (int j = 0; j < MapSize; j++)
                 {
-                        UserControl1 uc1 = new UserControl1(this.map.Ocean[i,j], this.Ships, i, j);
-
+                        UserControl1 uc1 = new UserControl1(this.map.Ocean[i,j], i, j);
                         Grid.SetColumn(uc1, i);
                         Grid.SetRow(uc1, j);
 
                         this.gameGrid.Children.Add(uc1);
                 }
             }
+           
         }
         #endregion
 
@@ -127,7 +168,12 @@ namespace battleships_xtreme_2k19.Views
 
                 System.Console.WriteLine(this.map.ToString());
             }
+
+
+
         }
         #endregion
+        
+        
     }
 }

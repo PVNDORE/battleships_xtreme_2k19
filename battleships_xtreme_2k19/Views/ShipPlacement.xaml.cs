@@ -1,12 +1,25 @@
-﻿using System;
+﻿using battleships_xtreme_2k19.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
-namespace battleships_xtreme_2k19.Models
+namespace battleships_xtreme_2k19.Views
 {
-    public class Player
+    /// <summary>
+    /// Logique d'interaction pour ShipPlacement.xaml
+    /// </summary>
+    public partial class ShipPlacement : Page
     {
 
         #region StaticVariables
@@ -19,15 +32,15 @@ namespace battleships_xtreme_2k19.Models
         #endregion
 
         #region Attributs
-        private Map playerMap;
+        private int mapSize;
         private List<Ship> ships;
         #endregion
 
         #region Properties
-        public Map PlayerMap
+        public int MapSize
         {
-            get { return playerMap; }
-            set { playerMap = value; }
+            get { return mapSize; }
+            set { mapSize = value; }
         }
         public List<Ship> Ships
         {
@@ -40,14 +53,15 @@ namespace battleships_xtreme_2k19.Models
         /// <summary>
         /// Default constructor.
         /// </summary>
-        public Player()
+        public ShipPlacement()
         {
-
+            InitializeComponent();
         }
-        public Player(Map map, List<Ship> ships)
+
+        public ShipPlacement(int mapSize, List<Ship> ships)
         {
-            this.PlayerMap = map;
-            this.Ships = ships;
+            this.mapSize = mapSize;
+            this.ships = ships;
         }
         #endregion
 
@@ -59,7 +73,6 @@ namespace battleships_xtreme_2k19.Models
 
         #region Events
         #endregion
-
 
     }
 }

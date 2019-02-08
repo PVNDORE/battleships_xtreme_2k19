@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:battleships_xtreme_2k19.Views"
       mc:Ignorable="d"
       Title="ShipPlacement">
-    <Grid x:Name="gameGrid" Grid.Row="1" Grid.Column="1"></Grid>
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="5*"/>
@@ -17,6 +17,7 @@
             <RowDefinition Height="5*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button x:Name="btnConfirmShipPlacement" Grid.Column="0" Grid.Row="0" Click="BtnConfirmShipPlacement_Click">Confirm Placement</Button>        
+        <Grid x:Name="gameGrid" Grid.Row="1" Grid.Column="1"></Grid>
+        <Button x:Name="btnConfirmShipPlacement" Grid.Column="3" Grid.Row="3" Click="BtnConfirmShipPlacement_Click">Confirm Placement</Button>        
     </Grid>    
 </Page>

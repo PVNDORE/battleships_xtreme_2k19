@@ -40,33 +40,32 @@ namespace battleships_xtreme_2k19.Views
         private int mapSize;
         private List<Ship> ships;
         private Map map;
-        private Ship shipSelected;
         // Carrier
-        private Char carrierX;
-        private Char carrierY;
+        private int carrierX;
+        private int carrierY;
         private bool carrierDirection;
         // Battleship
-        private Char battleShipX;
-        private Char battleShipY;
+        private int battleShipX;
+        private int battleShipY;
         private bool battleShipDirection;
         // Submarine
-        private Char submarineX;
-        private Char submarineY;
+        private int submarineX;
+        private int submarineY;
         private bool submarineDirection;
         // Destroyer
-        private Char destroyerX;
-        private Char destroyerY;
+        private int destroyerX;
+        private int destroyerY;
         private bool destroyerDirection;
         #endregion
 
         #region Properties
         // Carrier
-        public Char CarrierX
+        public int CarrierX
         {
             get { return carrierX; }
             set { carrierX = value; }
         }
-        public Char CarrierY
+        public int CarrierY
         {
             get { return carrierY; }
             set { carrierY = value; }
@@ -77,12 +76,12 @@ namespace battleships_xtreme_2k19.Views
             set { carrierDirection = value; }
         }
         // Battleship
-        public Char BattleShipX
+        public int BattleShipX
         {
             get { return battleShipX; }
             set { battleShipX = value; }
         }
-        public Char BattleShipY
+        public int BattleShipY
         {
             get { return battleShipY; }
             set { battleShipY = value; }
@@ -93,12 +92,12 @@ namespace battleships_xtreme_2k19.Views
             set { battleShipDirection = value; }
         }
         // Submarine
-        public Char SubmarineX
+        public int SubmarineX
         {
             get { return submarineX; }
             set { submarineX = value; }
         }
-        public Char SubmarineY
+        public int SubmarineY
         {
             get { return submarineY; }
             set { submarineY = value; }
@@ -109,12 +108,12 @@ namespace battleships_xtreme_2k19.Views
             set { submarineDirection = value; }
         }
         // Destroyer
-        public Char DestroyerX
+        public int DestroyerX
         {
             get { return destroyerX; }
             set { destroyerX = value; }
         }
-        public Char DestroyerY
+        public int DestroyerY
         {
             get { return destroyerY; }
             set { destroyerY = value; }
@@ -235,7 +234,7 @@ namespace battleships_xtreme_2k19.Views
                 }
                 if (ship.ShipType == ShipType.Battleship)
                 {
-                    if (PlayerViewControl.ShipPlacement(ship, BatlleShipX, BatlleShipY, player, BattleshipDirection))
+                    if (PlayerViewControl.ShipPlacement(ship, BattleShipX, BattleShipY, player, BattleShipDirection))
                     {
                         shipPlacement = true;
                     }

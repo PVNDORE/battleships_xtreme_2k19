@@ -32,9 +32,22 @@ namespace battleships_xtreme_2k19.Views
         #endregion
 
         #region Attributs
+        private int ship1Width;
+        private int ship1Height;
         #endregion
 
         #region Properties
+        public int Ship1Width
+        {
+            get { return ship1Width; }
+            set { ship1Width = value; }
+        }
+
+        public int Ship1Height
+        {
+            get { return ship1Height; }
+            set { ship1Height = value; }
+        }
         #endregion
 
         #region Constructors
@@ -44,6 +57,7 @@ namespace battleships_xtreme_2k19.Views
         public ConfigureShips()
         {
             InitializeComponent();
+            this.DataContext = this;
         }
         #endregion
 
@@ -56,21 +70,7 @@ namespace battleships_xtreme_2k19.Views
         #region Events
         private void BtnConfirmShip1_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                int size = Int32.Parse(this.Ship1Height.Text);
-                Map map = new Map(size);
-
-                int height = Int32.Parse(this.Ship1Height.Text);
-                int width = Int32.Parse(this.Ship1Width.Text);
-
-                Ship ship1 = new Ship(0, width, height, false);
-
-            }
-            catch (FormatException exception)
-            {
-                Console.WriteLine(exception.Message);
-            }
+            Ship ship1 = new Ship(0, ship1Width, ship1Height, false);
         }
         #endregion
 

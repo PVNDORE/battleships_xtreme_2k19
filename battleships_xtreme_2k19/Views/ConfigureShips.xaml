@@ -26,15 +26,12 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <TextBlock x:Name="titleShip1Size" Grid.Column="0" Grid.Row="0">choose a Carrier size</TextBlock>
-        <TextBlock x:Name="titleShip1Height" Grid.Column="0" Grid.Row="1">Height</TextBlock>
-        <TextBox x:Name="Ship1HeightTxt" Grid.Column="1" Grid.Row="1" Text="{Binding Ship1Height, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-        <TextBlock x:Name="titleShip1Width" Grid.Column="0" Grid.Row="2">Width</TextBlock>
-        <TextBox x:Name="Ship1WidthTxt" Grid.Column="1" Grid.Row="2" Text="{Binding Ship1Width, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-        <TextBox x:Name="CarrierHeight" Grid.Column="1" Grid.Row="1"/>
-        <TextBlock x:Name="titleShip1Width" Grid.Column="0" Grid.Row="2">Width</TextBlock>
-        <TextBox x:Name="CarrierWidth" Grid.Column="1" Grid.Row="2"/>
-        <Button x:Name="btnConfirmShip1" Grid.Column="0" Grid.Row="3" Click="BtnConfirmShip1_Click">Confirm</Button>
+        <TextBlock x:Name="titleCarrierSize" Grid.Column="0" Grid.Row="0">choose a Carrier size</TextBlock>
+        <TextBlock x:Name="titleCarrierHeight" Grid.Column="0" Grid.Row="1">Height</TextBlock>
+        <TextBox x:Name="CarrierHeightTxt" Grid.Column="1" Grid.Row="1" Text="{Binding CarrierHeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <TextBlock x:Name="titleCarrierWidth" Grid.Column="0" Grid.Row="2">Width</TextBlock>
+        <TextBox x:Name="CarrierWidthTxt" Grid.Column="1" Grid.Row="2" Text="{Binding CarrierWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <Button x:Name="btnConfirmCarrier" Grid.Column="0" Grid.Row="3" Click="BtnConfirmShip1_Click">Confirm</Button>
 
     </Grid>
 </Page>

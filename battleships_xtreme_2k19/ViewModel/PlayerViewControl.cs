@@ -21,27 +21,73 @@ namespace battleships_xtreme_2k19.ViewModel
 
 
         #region StaticFunctions
-        public static bool ShipPlacement(Ship ship, Position position, Player player, String direction)
+        public static bool ShipPlacement(Ship ship, int x, int y, Player player, String direction)
         {
+            bool shipPlacement = false;
             String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             Map map = player.PlayerMap;
-                for (int i = 0; i < player.PlayerMap.Size; i++)
+            if (direction == "Right")
+            {
+                if (ship.Height + x < map.Size)
                 {
-                    for (int j = 0; j < player.PlayerMap.Size; j++)
+                    if (ship.Width + y < map.Size)
                     {
-                        if (position.XPosition.Equals(alphabet[i]) && position.YPosition.Equals(j) && map.Ocean[i, j].IsWater())
+                        for (int i = x; i < ship.Height + x; i++)
                         {
-                            Position coordonates = new Position(alphabet[i], j);
-                            map.Ocean[i, j] = new SquareShip(false, coordonates, ship.ShipValue);
-                        }
-                        else if (position.XPosition.Equals(alphabet[i]) && position.YPosition.Equals(j) && map.Ocean[i, j].IsWater() == false)
-                        {
-                            return false;
+                            for (int j = y; j < ship.Width + y; j++)
+                            {
+                                if (map.Ocean[i, j].IsWater())
+                                {
+                                    Position shipPosition = new Position(alphabet[i], j);
+                                    map.Ocean[i, j] = new SquareShip(false, shipPosition, ship.ShipValue);
+                                }
+                                else
+                                {
+                                    shipPlacement = false;
+                                    break;
+                                }
+                            }
+                            if (shipPlacement == false)
+                            {
+                                break;
+                            }
+                            shipPlacement = true;
                         }
                     }
                 }
-            player.PlayerMap = map;
-            return true;
+            }
+            else
+            {
+                if (ship.Height + y < map.Size)
+                {
+                    if (ship.Width + x < map.Size)
+                    {
+                        for (int i = x; i < ship.Height + x; i++)
+                        {
+                            for (int j = y; j < ship.Width + y; j++)
+                            {
+                                if (map.Ocean[i, j].IsWater())
+                                {
+                                    Position shipPosition = new Position(alphabet[i], j);
+                                    map.Ocean[i, j] = new SquareShip(false, shipPosition, ship.ShipValue);
+                                }
+                                else
+                                {
+                                    shipPlacement = false;
+                                    break;
+                                }
+                            }
+                            if (shipPlacement == false)
+                            {
+                                break;
+                            }
+                            shipPlacement = true;
+                        }
+                        
+                    }
+                }
+            }
+            return shipPlacement;
         }
 
         public static String TargetFire(Position position, Computer computer)

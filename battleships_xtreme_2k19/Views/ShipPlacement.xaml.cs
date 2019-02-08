@@ -1,6 +1,7 @@
 ﻿using battleships_xtreme_2k19.Database;
 using battleships_xtreme_2k19.Models;
 using battleships_xtreme_2k19.UserControl;
+using battleships_xtreme_2k19.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -171,7 +172,62 @@ namespace battleships_xtreme_2k19.Views
                 System.Console.WriteLine(this.map.ToString());
             }
 
+            Map playerMap = new Map();
+            Map computerMap = new Map();
+            Player player = new Player(playerMap, this.Ships);
+            Computer computer = new Computer(Difficulty.easy, computerMap, this.Ships);
+            ComputerViewControl.ShipPlacement(computer);
+            bool shipPlacement = false;
+            foreach (var ship in Ships)
+            {
+                if (ship.ShipType == ShipType.Carrier)
+                {
+                    if (PlayerViewControl.ShipPlacement(ship, CarrierX, CarrierY, player))
+                    {
+                        shipPlacement = true;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                if (ship.ShipType == ShipType.Battleship)
+                {
+                    if (PlayerViewControl.ShipPlacement(ship, BatlleShipX, BatlleShipY, player))
+                    {
+                        shipPlacement = true;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                if (ship.ShipType == ShipType.Submarine)
+                {
+                    if (PlayerViewControl.ShipPlacement(ship, SubmarineX, SubmarineY, player))
+                    {
+                        shipPlacement = true;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                if (ship.ShipType == ShipType.Destroyer)
+                {
+                    if (PlayerViewControl.ShipPlacement(ship, DestroyerX, DestroyerY, player))
+                    {
+                        shipPlacement = true;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
 
+                (this.Parent as Window).Content = new BattleShips(player, computer);
+            }
+            
 
         }
         #endregion

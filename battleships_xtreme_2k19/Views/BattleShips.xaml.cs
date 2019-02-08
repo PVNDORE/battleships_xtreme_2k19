@@ -1,4 +1,5 @@
 ﻿using battleships_xtreme_2k19.Models;
+using battleships_xtreme_2k19.UserControl;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -62,6 +63,8 @@ namespace battleships_xtreme_2k19.Views
         {
             this.player = player;
             this.computer = computer;
+            GeneratePlayerMap();
+            GenerateComputerMap();
         }
         #endregion
 
@@ -69,6 +72,69 @@ namespace battleships_xtreme_2k19.Views
         #endregion
 
         #region Functions
+        public void GeneratePlayerMap()
+        {
+            this.playerGrid.Children.Clear();
+            this.playerGrid.ColumnDefinitions.Clear();
+            this.playerGrid.RowDefinitions.Clear();
+
+            for (int i = 0; i < player.PlayerMap.Size; i++)
+            {
+                ColumnDefinition col = new ColumnDefinition();
+                this.playerGrid.ColumnDefinitions.Add(col);
+            }
+
+            for (int i = 0; i < player.PlayerMap.Size; i++)
+            {
+                RowDefinition row = new RowDefinition();
+                this.playerGrid.RowDefinitions.Add(row);
+            }
+
+            for (int i = 0; i < player.PlayerMap.Size; i++)
+            {
+                for (int j = 0; j < player.PlayerMap.Size; j++)
+                {
+                    UserControl1 uc1 = new UserControl1(player.PlayerMap.Ocean[i, j], i, j);
+                    Grid.SetColumn(uc1, i);
+                    Grid.SetRow(uc1, j);
+
+                    this.playerGrid.Children.Add(uc1);
+                }
+            }
+
+        }
+
+        public void GenerateComputerMap()
+        {
+            this.computerGrid.Children.Clear();
+            this.computerGrid.ColumnDefinitions.Clear();
+            this.computerGrid.RowDefinitions.Clear();
+
+            for (int i = 0; i < player.PlayerMap.Size; i++)
+            {
+                ColumnDefinition col = new ColumnDefinition();
+                this.computerGrid.ColumnDefinitions.Add(col);
+            }
+
+            for (int i = 0; i < player.PlayerMap.Size; i++)
+            {
+                RowDefinition row = new RowDefinition();
+                this.computerGrid.RowDefinitions.Add(row);
+            }
+
+            for (int i = 0; i < player.PlayerMap.Size; i++)
+            {
+                for (int j = 0; j < player.PlayerMap.Size; j++)
+                {
+                    UserControl1 uc1 = new UserControl1(Computer.PlayerMap.Ocean[i, j], i, j);
+                    Grid.SetColumn(uc1, i);
+                    Grid.SetRow(uc1, j);
+
+                    this.computerGrid.Children.Add(uc1);
+                }
+            }
+
+        }
         #endregion
 
         #region Events

@@ -206,6 +206,7 @@ namespace battleships_xtreme_2k19.Views
                     }
                     else
                     {
+                        shipPlacement = false;
                         break;
                     }
                 }
@@ -217,6 +218,7 @@ namespace battleships_xtreme_2k19.Views
                     }
                     else
                     {
+                        shipPlacement = false;
                         break;
                     }
                 }
@@ -228,6 +230,7 @@ namespace battleships_xtreme_2k19.Views
                     }
                     else
                     {
+                        shipPlacement = false;
                         break;
                     }
                 }
@@ -239,13 +242,19 @@ namespace battleships_xtreme_2k19.Views
                     }
                     else
                     {
+                        shipPlacement = false;
                         break;
                     }
                 }
 
+                
+            }
+            if (shipPlacement)
+            {
                 (this.Parent as Window).Content = new BattleShips(player, computer);
             }
             
+
 
         }
         #endregion

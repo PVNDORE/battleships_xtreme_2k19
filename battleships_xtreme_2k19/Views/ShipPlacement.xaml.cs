@@ -37,6 +37,7 @@ namespace battleships_xtreme_2k19.Views
         #region Attributs
         private int mapSize;
         private List<Ship> ships;
+        private Map map;
         #endregion
 
         #region Properties
@@ -50,7 +51,11 @@ namespace battleships_xtreme_2k19.Views
             get { return ships; }
             set { ships = value; }
         }
-        
+        public Map Map
+        {
+            get { return map; }
+            set { map = value; }
+        }
         #endregion
 
         #region Constructors

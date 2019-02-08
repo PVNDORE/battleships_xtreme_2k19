@@ -44,12 +44,19 @@ namespace battleships_xtreme_2k19.Views
         // Carrier
         private Char carrierX;
         private Char carrierY;
+        private bool carrierDirection;
         // Battleship
         private Char battleShipX;
+        private Char battleShipY;
+        private bool battleShipDirection;
         // Submarine
         private Char submarineX;
+        private Char submarineY;
+        private bool submarineDirection;
         // Destroyer
         private Char destroyerX;
+        private Char destroyerY;
+        private bool destroyerDirection;
         #endregion
 
         #region Properties
@@ -64,12 +71,26 @@ namespace battleships_xtreme_2k19.Views
             get { return carrierY; }
             set { carrierY = value; }
         }
-
+        public bool CarrierDirection
+        {
+            get { return carrierDirection; }
+            set { carrierDirection = value; }
+        }
         // Battleship
         public Char BattleShipX
         {
             get { return battleShipX; }
             set { battleShipX = value; }
+        }
+        public Char BattleShipY
+        {
+            get { return battleShipY; }
+            set { battleShipY = value; }
+        }
+        public bool BattleShipDirection
+        {
+            get { return battleShipDirection; }
+            set { battleShipDirection = value; }
         }
         // Submarine
         public Char SubmarineX
@@ -77,11 +98,31 @@ namespace battleships_xtreme_2k19.Views
             get { return submarineX; }
             set { submarineX = value; }
         }
+        public Char SubmarineY
+        {
+            get { return submarineY; }
+            set { submarineY = value; }
+        }
+        public bool SubmarineDirection
+        {
+            get { return submarineDirection; }
+            set { submarineDirection = value; }
+        }
         // Destroyer
         public Char DestroyerX
         {
             get { return destroyerX; }
             set { destroyerX = value; }
+        }
+        public Char DestroyerY
+        {
+            get { return destroyerY; }
+            set { destroyerY = value; }
+        }
+        public bool DestroyerDirection
+        {
+            get { return destroyerDirection; }
+            set { destroyerDirection = value; }
         }
 
         public int MapSize

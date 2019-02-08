@@ -39,7 +39,8 @@ namespace battleships_xtreme_2k19.Views
         #region Attributs
         private int mapSize;
         private List<Ship> ships;
-        private Map map;
+        private Map playerMap;
+        private Map computerMap;
         // Carrier
         private int carrierX;
         private int carrierY;
@@ -134,10 +135,15 @@ namespace battleships_xtreme_2k19.Views
             get { return ships; }
             set { ships = value; }
         }
-        public Map Map
+        public Map ComputerMap
         {
-            get { return map; }
-            set { map = value; }
+            get { return computerMap; }
+            set { computerMap = value; }
+        }
+        public Map PlayerMap
+        {
+            get { return playerMap; }
+            set { playerMap = value; }
         }
         #endregion
 
@@ -156,7 +162,8 @@ namespace battleships_xtreme_2k19.Views
             this.MapSize = mapSize;
             this.Ships = ships;
             
-            this.Map = new Map(MapSize);
+            this.PlayerMap = new Map(MapSize);
+            this.ComputerMap = new Map(MapSize);
             this.GenerateMap();
         }
         #endregion
@@ -187,7 +194,7 @@ namespace battleships_xtreme_2k19.Views
             {
                 for (int j = 0; j < MapSize; j++)
                 {
-                        UserControl1 uc1 = new UserControl1(this.map.Ocean[i,j], i, j);
+                        UserControl1 uc1 = new UserControl1(this.PlayerMap.Ocean[i,j], i, j);
                         Grid.SetColumn(uc1, i);
                         Grid.SetRow(uc1, j);
 
@@ -201,14 +208,13 @@ namespace battleships_xtreme_2k19.Views
         #region Events
         private void BtnConfirmShipPlacement_Click(object sender, RoutedEventArgs e)
         {
-            Map playerMap = this.Map;
-            Map computerMap = this.Map;
+            Map playerMap = this.PlayerMap;
+            Map computerMap = this.ComputerMap;
             Player player = new Player(playerMap, this.Ships);
             Computer computer = new Computer(Difficulty.easy, computerMap, this.Ships);
             ComputerViewControl.ShipPlacement(computer);
             System.Console.WriteLine(computer.PlayerMap.ToString());
             bool shipPlacement = false;
-            Console.WriteLine("test2");
             foreach (var ship in Ships)
             {
                 if (ship.ShipType == ShipType.Carrier)
@@ -268,13 +274,10 @@ namespace battleships_xtreme_2k19.Views
             }
             using (var db = new ApplicationDbContext())
             {
-                db.MapDbSet.Add(this.map);
+                db.MapDbSet.Add(this.PlayerMap);
 
                 db.SaveChanges();
-
-                System.Console.WriteLine("--------------------");
-
-                System.Console.WriteLine(this.map.ToString());
+                
             }
             if (shipPlacement)
             {

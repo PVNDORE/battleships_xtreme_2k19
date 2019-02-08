@@ -31,15 +31,11 @@ namespace battleships_xtreme_2k19.ViewModel
                 bool shipPlacement = false;
                 while (shipPlacement == false)
                 {
-                    Console.WriteLine("shipPlacement:"+shipPlacement);
                     int x = rand.Next(computer.PlayerMap.Size);
                     int y = rand.Next(computer.PlayerMap.Size);
                     int direction = rand.Next(2);
-                    Console.WriteLine("direction:" + direction);
                     if (direction == 0)
                     {
-                        Console.WriteLine("height" + ship.Height);
-                        Console.WriteLine("size" + computer.PlayerMap.Size);
                         if (ship.Height + x < computer.PlayerMap.Size)
                         {
                             if (ship.Width + y < computer.PlayerMap.Size)
@@ -52,6 +48,7 @@ namespace battleships_xtreme_2k19.ViewModel
                                         {
                                             Position shipPosition = new Position(alphabet[i], j);
                                             map.Ocean[i, j] = new SquareShip(false, shipPosition, ship.ShipValue);
+                                            shipPlacement = true;
                                         }
                                         else
                                         {
@@ -83,6 +80,7 @@ namespace battleships_xtreme_2k19.ViewModel
                                         {
                                             Position shipPosition = new Position(alphabet[i], j);
                                             map.Ocean[i, j] = new SquareShip(false, shipPosition, ship.ShipValue);
+                                            shipPlacement = true;
                                         }
                                         else
                                         {

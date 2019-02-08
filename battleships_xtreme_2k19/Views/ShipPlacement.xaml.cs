@@ -41,47 +41,49 @@ namespace battleships_xtreme_2k19.Views
         private List<Ship> ships;
         private Map map;
         private Ship shipSelected;
-        private String carrierDirection;
-        private String batlleShipDirection;
-        private String submarineDirection;
-        private String destroyerDirection;
+        // Carrier
         private Char carrierX;
-        private Char BatlleShipX;
-        private Char SubmarineX;
-        private Char DestroyerX;
+        private Char carrierY;
+        // Battleship
+        private Char battleShipX;
+        // Submarine
+        private Char submarineX;
+        // Destroyer
+        private Char destroyerX;
         #endregion
 
         #region Properties
-        public Char BatlleShipX
-        {
-            get { return batlleShipX; }
-            set { batlleShipX = value; }
-        }
+        // Carrier
         public Char CarrierX
         {
             get { return carrierX; }
             set { carrierX = value; }
         }
-        public String CarrierDirection
+        public Char CarrierY
         {
-            get { return carrierDirection; }
-            set { carrierDirection = value; }
+            get { return carrierY; }
+            set { carrierY = value; }
         }
-        public String BatlleShipDirection
+
+        // Battleship
+        public Char BattleShipX
         {
-            get { return batlleShipDirection; }
-            set { batlleShipDirection = value; }
+            get { return battleShipX; }
+            set { battleShipX = value; }
         }
-        public String SubmarineDirection
+        // Submarine
+        public Char SubmarineX
         {
-            get { return submarineDirection; }
-            set { submarineDirection = value; }
+            get { return submarineX; }
+            set { submarineX = value; }
         }
-        public String DestroyerDirection
+        // Destroyer
+        public Char DestroyerX
         {
-            get { return destroyerDirection; }
-            set { destroyerDirection = value; }
+            get { return destroyerX; }
+            set { destroyerX = value; }
         }
+
         public int MapSize
         {
             get { return mapSize; }

@@ -1,8 +1,10 @@
 ﻿using battleships_xtreme_2k19.Models;
+using battleships_xtreme_2k19.UserControl;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace battleships_xtreme_2k19.Views
 {
@@ -29,9 +32,18 @@ namespace battleships_xtreme_2k19.Views
         #endregion
 
         #region Variables
+        public UserControl1 Uc1
+        {
+            get { return this.Uc1; }
+            set
+            {
+                this.Uc1 = value;
+            }
+        }
         #endregion
 
         #region Attributs
+
         private int mapSize;
         private List<Ship> ships;
         Grid grid = new Grid();
@@ -48,6 +60,7 @@ namespace battleships_xtreme_2k19.Views
             get { return ships; }
             set { ships = value; }
         }
+        
         #endregion
 
         #region Constructors
@@ -66,19 +79,7 @@ namespace battleships_xtreme_2k19.Views
             this.DataContext = this;
             this.mapSize = mapSize;
             this.ships = ships;
-            for (int i = 0; i < MapSize; i++)
-            {
-                this.grid.ColumnDefinitions.Add(new ColumnDefinition());
-                this.grid.RowDefinitions.Add(new RowDefinition());
-            }
-            foreach (var g in this.grid.RowDefinitions)
-            {
-                g.Height = new GridLength(100);
-            }
-            foreach(var g in this.grid.ColumnDefinitions)
-            {
-                g.Width = new GridLength(100);
-            }
+            this.Uc1.DataContext = this.Uc1;
         }
         #endregion
 
@@ -86,6 +87,44 @@ namespace battleships_xtreme_2k19.Views
         #endregion
 
         #region Functions
+        public void GenerateMap()
+        {
+            this.gameGrid.Children.Clear();
+            this.gameGrid.ColumnDefinitions.Clear();
+            this.gameGrid.RowDefinitions.Clear();
+
+            for (int i = 0; i < MapSize; i++)
+            {
+                ColumnDefinition col = new ColumnDefinition();
+                this.gameGrid.ColumnDefinitions.Add(col);
+            }
+
+            for (int i = 0; i < MapSize; i++)
+            {
+                RowDefinition row = new RowDefinition();
+                this.gameGrid.RowDefinitions.Add(row);
+            }
+
+            Task.Factory.StartNew(() =>
+            {
+                Map map = new Map();
+                for (int i = 0; i < MapSize; i++)
+                {
+                    for (int j = 0; j < MapSize; j++)
+                    {
+                        Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, new ThreadStart(delegate
+                        {
+                            UserControl1 uc1 = new UserControl1(map.Ocean[i,j]);
+
+                            Grid.SetColumn(uc1, i);
+                            Grid.SetRow(uc1, j);
+
+                            this.gameGrid.Children.Add(uc1);
+                        }));
+                    }
+                }
+            });
+        }
         #endregion
 
         #region Events

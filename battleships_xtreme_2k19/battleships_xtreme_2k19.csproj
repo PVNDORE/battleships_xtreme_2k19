@@ -62,12 +62,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="UserControl\UserControl1.xaml.cs">
+      <DependentUpon>UserControl1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\BattleShips.xaml.cs">
       <DependentUpon>BattleShips.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ShipPlacement.xaml.cs">
       <DependentUpon>ShipPlacement.xaml</DependentUpon>
     </Compile>
+    <Page Include="UserControl\UserControl1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\BattleShips.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

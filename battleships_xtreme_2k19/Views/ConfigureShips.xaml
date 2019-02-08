@@ -18,6 +18,7 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -25,13 +26,36 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-
+        
+    <!-- Carrier -->
         <TextBlock x:Name="titleCarrierSize" Grid.Column="0" Grid.Row="0">choose a Carrier size</TextBlock>
         <TextBlock x:Name="titleCarrierHeight" Grid.Column="0" Grid.Row="1">Height</TextBlock>
         <TextBox x:Name="CarrierHeightTxt" Grid.Column="1" Grid.Row="1" Text="{Binding CarrierHeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
         <TextBlock x:Name="titleCarrierWidth" Grid.Column="0" Grid.Row="2">Width</TextBlock>
-        <TextBox x:Name="CarrierWidthTxt" Grid.Column="1" Grid.Row="2" Text="{Binding CarrierWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-        <Button x:Name="btnConfirmCarrier" Grid.Column="0" Grid.Row="3" Click="BtnConfirmShip1_Click">Confirm</Button>
+        <TextBox x:Name="CarrierWidthTxt" Grid.Column="1" Grid.Row="2" Text="{Binding CarrierWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>        
+        
+    <!-- Battleship -->
+        <TextBlock x:Name="titleBattleshipSize" Grid.Column="2" Grid.Row="0">choose a Battleship size</TextBlock>
+        <TextBlock x:Name="titleBattleshipHeight" Grid.Column="2" Grid.Row="1">Height</TextBlock>
+        <TextBox x:Name="BattleshipHeightTxt" Grid.Column="3" Grid.Row="1" Text="{Binding BattleshipHeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <TextBlock x:Name="titleBattleshipWidth" Grid.Column="2" Grid.Row="2">Width</TextBlock>
+        <TextBox x:Name="BattleshipWidthTxt" Grid.Column="3" Grid.Row="2" Text="{Binding BattleshipWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>        
 
+    <!-- Submarine -->
+        <TextBlock x:Name="titleSubmarineSize" Grid.Column="4" Grid.Row="0">choose a Submarine size</TextBlock>
+        <TextBlock x:Name="titleSubmarineHeight" Grid.Column="4" Grid.Row="1">Height</TextBlock>
+        <TextBox x:Name="SubmarineHeightTxt" Grid.Column="5" Grid.Row="1" Text="{Binding SubmarineHeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <TextBlock x:Name="titleSubmarineWidth" Grid.Column="4" Grid.Row="2">Width</TextBlock>
+        <TextBox x:Name="SubmarineWidthTxt" Grid.Column="5" Grid.Row="2" Text="{Binding SubmarineWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+
+    <!-- Destroyer -->
+        <TextBlock x:Name="titleDestroyerSize" Grid.Column="6" Grid.Row="0">choose a Destroyer size</TextBlock>
+        <TextBlock x:Name="titleDestroyerHeight" Grid.Column="6" Grid.Row="1">Height</TextBlock>
+        <TextBox x:Name="DestroyerHeightTxt" Grid.Column="7" Grid.Row="1" Text="{Binding DestroyerHeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <TextBlock x:Name="titleDestroyerWidth" Grid.Column="6" Grid.Row="2">Width</TextBlock>
+        <TextBox x:Name="DestroyerWidthTxt" Grid.Column="7" Grid.Row="2" Text="{Binding DestroyerWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+
+    <!-- Confirm button -->
+        <Button x:Name="BtnConfirmShips" Grid.Column="8" Grid.Row="3" Click="BtnConfirmShips_Click">Confirm</Button>
     </Grid>
 </Page>

@@ -18,7 +18,6 @@ namespace battleships_xtreme_2k19.Models
             get;
             set;
         }
-
         bool IsWater();
         bool GotTargeted();
         int SquareValue();

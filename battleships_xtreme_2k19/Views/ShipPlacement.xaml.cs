@@ -70,8 +70,8 @@ namespace battleships_xtreme_2k19.Views
         {
             InitializeComponent();
             this.DataContext = this;
-            this.mapSize = mapSize;
-            this.ships = ships;
+            this.MapSize = mapSize;
+            this.Ships = ships;
             this.GenerateMap();
         }
         #endregion
@@ -102,7 +102,7 @@ namespace battleships_xtreme_2k19.Views
             {
                 for (int j = 0; j < MapSize; j++)
                 {
-                        UserControl1 uc1 = new UserControl1(this.map.Ocean[i,j], Ships);
+                        UserControl1 uc1 = new UserControl1(this.map.Ocean[i,j], this.Ships, i, j);
 
                         Grid.SetColumn(uc1, i);
                         Grid.SetRow(uc1, j);

@@ -34,13 +34,38 @@ namespace battleships_xtreme_2k19.UserControl
 
         #region Attributs
         private ISquare square;
+        private int x;
+        private int y;
+        private String direction;
+        private String color;
+       
         #endregion
 
         #region Properties
+        public String Color
+        {
+            get { return color; }
+            set { color = value; }
+        }
+        public int Y
+        {
+            get { return y; }
+            set { y = value; }
+        }
+        public int X
+        {
+            get { return x; }
+            set { x = value; }
+        }
         public ISquare Square
         {
             get { return square; }
             set { square = value; }
+        }
+        public String Direction
+        {
+            get { return direction; }
+            set { direction = value; }
         }
         #endregion
 
@@ -48,12 +73,15 @@ namespace battleships_xtreme_2k19.UserControl
         /// <summary>
         /// Default constructor.
         /// </summary>
-        public UserControl1(ISquare square, List<Ship> ships)
+        public UserControl1(ISquare square, List<Ship> ships, int x, int y)
         {
             InitializeComponent();
             this.DataContext = this;
             this.Square = square;
-
+            this.X = x;
+            this.Y = y;
+            this.Color = "Blue";
+            this.Direction = "";
         }
         #endregion
 
@@ -66,7 +94,10 @@ namespace battleships_xtreme_2k19.UserControl
         #region Events
         private void Btn_Click(object sender, RoutedEventArgs e)
         {
-            PlayerViewControl.ShipPlacement();
+            this.Color = "Red";
+     //       String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+     //       Position position = new Position(alphabet[this.X], this.Y);
+     //       this.square = new SquareShip(false, position, 1);
         }
         #endregion
 
@@ -82,5 +113,6 @@ namespace battleships_xtreme_2k19.UserControl
             }
         }
         #endregion
+        
     }
 }

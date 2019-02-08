@@ -46,10 +46,13 @@ namespace battleships_xtreme_2k19.Views
         private Char carrierY;
         // Battleship
         private Char battleShipX;
+        private Char battleShipY;
         // Submarine
         private Char submarineX;
+        private Char submarineY;
         // Destroyer
         private Char destroyerX;
+        private Char destroyerY;
         #endregion
 
         #region Properties
@@ -71,17 +74,32 @@ namespace battleships_xtreme_2k19.Views
             get { return battleShipX; }
             set { battleShipX = value; }
         }
+        public Char BattleShipY
+        {
+            get { return battleShipY; }
+            set { battleShipY = value; }
+        }
         // Submarine
         public Char SubmarineX
         {
             get { return submarineX; }
             set { submarineX = value; }
         }
+        public Char SubmarineY
+        {
+            get { return submarineY; }
+            set { submarineY = value; }
+        }
         // Destroyer
         public Char DestroyerX
         {
             get { return destroyerX; }
             set { destroyerX = value; }
+        }
+        public Char DestroyerY
+        {
+            get { return destroyerY; }
+            set { destroyerY = value; }
         }
 
         public int MapSize

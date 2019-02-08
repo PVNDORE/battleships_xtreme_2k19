@@ -47,6 +47,7 @@ namespace battleships_xtreme_2k19.Views
         private int mapSize;
         private List<Ship> ships;
         Grid grid = new Grid();
+        private Map map;
         #endregion
 
         #region Properties
@@ -60,7 +61,11 @@ namespace battleships_xtreme_2k19.Views
             get { return ships; }
             set { ships = value; }
         }
-        
+        public Map Map
+        {
+            get { return map; }
+            set { map = value; }
+        }
         #endregion
 
         #region Constructors

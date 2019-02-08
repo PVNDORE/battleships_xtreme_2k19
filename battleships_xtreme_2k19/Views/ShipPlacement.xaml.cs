@@ -34,6 +34,7 @@ namespace battleships_xtreme_2k19.Views
         #region Attributs
         private int mapSize;
         private List<Ship> ships;
+        Grid grid = new Grid();
         #endregion
 
         #region Properties
@@ -56,12 +57,28 @@ namespace battleships_xtreme_2k19.Views
         public ShipPlacement()
         {
             InitializeComponent();
+            this.DataContext = this;
         }
 
         public ShipPlacement(int mapSize, List<Ship> ships)
         {
+            InitializeComponent();
+            this.DataContext = this;
             this.mapSize = mapSize;
             this.ships = ships;
+            for (int i = 0; i < MapSize; i++)
+            {
+                this.grid.ColumnDefinitions.Add(new ColumnDefinition());
+                this.grid.RowDefinitions.Add(new RowDefinition());
+            }
+            foreach (var g in this.grid.RowDefinitions)
+            {
+                g.Height = new GridLength(100);
+            }
+            foreach(var g in this.grid.ColumnDefinitions)
+            {
+                g.Width = new GridLength(100);
+            }
         }
         #endregion
 

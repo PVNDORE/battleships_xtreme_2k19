@@ -7,6 +7,8 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ShipPlacement">
-    <Grid x:Name="gameGrid" Grid.Row="0" Grid.Column="0"></Grid>
+    <Grid x:Name="gameGrid" Grid.Row="0" Grid.Column="0">
+        <Button x:Name="btnConfirmShipPlacement" Grid.Column="0" Grid.Row="0" Click="BtnConfirmShipPlacement_Click">Confirm Placement</Button>
+    </Grid>
     
 </Page>

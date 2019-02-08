@@ -1,4 +1,5 @@
-﻿using battleships_xtreme_2k19.Models;
+﻿using battleships_xtreme_2k19.Database;
+using battleships_xtreme_2k19.Models;
 using battleships_xtreme_2k19.UserControl;
 using System;
 using System.Collections.Generic;
@@ -133,7 +134,19 @@ namespace battleships_xtreme_2k19.Views
         #endregion
 
         #region Events
-        #endregion
+        private void BtnConfirmShipPlacement_Click(object sender, RoutedEventArgs e)
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                db.MapDbSet.Add(this.map);
 
+                db.SaveChanges();
+
+                System.Console.WriteLine("--------------------");
+
+                System.Console.WriteLine(this.map.ToString());
+            }
+        }
+        #endregion
     }
 }

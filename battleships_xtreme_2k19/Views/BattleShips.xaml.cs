@@ -323,29 +323,32 @@ namespace battleships_xtreme_2k19.Views
 
         private void btnConfirmtarget_Click(object sender, RoutedEventArgs e)
         {
-            
-            String yString = this.CoordinatesTarget.Substring(1);
-            System.Console.WriteLine(yString);
             try
             {
-                int y = Int32.Parse(yString);
-                System.Console.WriteLine(y);
-                Position target = new Position(this.CoordinatesTarget[0], y);
-                PlayerViewControl.TargetFire(target, this.Computer);
-                //ShipNumber(this.ShipLeftComuputer, this.Computer.PlayerMap, false);
-                ComputerViewControl.IATargetFire(this.Player);
-                //ShipNumber(this.ShipLeftPlayer, this.Player.PlayerMap, true);
-                GeneratePlayerMap(this.Player.PlayerMap);
-                GenerateComputerMap(this.Computer.PlayerMap);
+                String yString = this.CoordinatesTarget.Substring(1);
+                try
+                {
+                    int y = Int32.Parse(yString);
+                    System.Console.WriteLine(y);
+                    Position target = new Position(this.CoordinatesTarget[0], y);
+                    PlayerViewControl.TargetFire(target, this.Computer);
+                    //ShipNumber(this.ShipLeftComuputer, this.Computer.PlayerMap, false);
+                    ComputerViewControl.IATargetFire(this.Player);
+                    //ShipNumber(this.ShipLeftPlayer, this.Player.PlayerMap, true);
+                    GeneratePlayerMap(this.Player.PlayerMap);
+                    GenerateComputerMap(this.Computer.PlayerMap);
+                }
+                catch (Exception)
+                {
+
+                    System.Windows.MessageBox.Show("Vos ingénieurs vont avoir du mal à savoir où viser si vous ne donnez qu'une seule coordonée.");
+                }
             }
             catch (Exception)
             {
-
                 System.Windows.MessageBox.Show("Veuillez entrer une cible valide. Les ingénieurs qui organisent le tir n'ont rien compris à votre demande.");
-            }
-            
-            
 
+            }
         }
     }
 }

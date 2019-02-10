@@ -221,7 +221,6 @@ namespace battleships_xtreme_2k19.Views
                 {
                     if (PlayerViewControl.ShipPlacement(ship, CarrierX, CarrierY, player, CarrierDirection))
                     {
-                        Console.WriteLine("CarrierY: "+CarrierY);
                         shipPlacement = true;
                     }
                     else
@@ -235,7 +234,6 @@ namespace battleships_xtreme_2k19.Views
                     if (PlayerViewControl.ShipPlacement(ship, BattleShipX, BattleShipY, player, BattleShipDirection))
                     {
                         shipPlacement = true;
-                        Console.WriteLine("CarrierY: " + BattleShipY);
                     }
                     else
                     {
@@ -248,7 +246,6 @@ namespace battleships_xtreme_2k19.Views
                     if (PlayerViewControl.ShipPlacement(ship, SubmarineX, SubmarineY, player, SubmarineDirection))
                     {
                         shipPlacement = true;
-                        Console.WriteLine("CarrierY: " + SubmarineY);
                     }
                     else
                     {
@@ -261,7 +258,6 @@ namespace battleships_xtreme_2k19.Views
                     if (PlayerViewControl.ShipPlacement(ship, DestroyerX, DestroyerY, player, DestroyerDirection))
                     {
                         shipPlacement = true;
-                        Console.WriteLine("CarrierY: " + DestroyerY);
                     }
                     else
                     {
@@ -272,16 +268,23 @@ namespace battleships_xtreme_2k19.Views
 
                 
             }
-            using (var db = new ApplicationDbContext())
-            {
-                db.MapDbSet.Add(this.PlayerMap);
-
-                db.SaveChanges();
-                
-            }
+            
             if (shipPlacement)
             {
+                using (var db = new ApplicationDbContext())
+                {
+                    db.MapDbSet.Add(this.PlayerMap);
+
+                    db.SaveChanges();
+
+                }
                 (this.Parent as Window).Content = new BattleShips(player, computer);
+            }
+            else
+            {
+                this.PlayerMap = new Map(this.MapSize);
+                this.ComputerMap = new Map(this.MapSize);
+                System.Windows.MessageBox.Show("Revoyez le placement de vos bateaux.");
             }
             
 

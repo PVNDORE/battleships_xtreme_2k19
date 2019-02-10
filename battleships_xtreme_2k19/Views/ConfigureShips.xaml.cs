@@ -135,8 +135,6 @@ namespace battleships_xtreme_2k19.Views
         private void BtnConfirmShips_Click(object sender, RoutedEventArgs e)
         {
             // Carrier
-            Console.WriteLine("CarrierWidth: "+this.CarrierWidth);
-            Console.WriteLine("CarrierHeight: " + this.CarrierHeight);
             Ship carrier = new Ship(ShipType.Carrier, this.CarrierWidth, this.CarrierHeight, false);
             this.Ships.Add(carrier);
             // Battleship

@@ -107,8 +107,6 @@ namespace battleships_xtreme_2k19.ViewModel
             Map map = computer.PlayerMap;
             if (xPosition >= 0 && xPosition < 26)
             {
-                System.Console.WriteLine("y: "+position.YPosition);
-                System.Console.WriteLine("mapsize: " + map.Size);
                 if (position.YPosition > 0 || position.YPosition <= map.Size)
                 {
                     if (map.Ocean[xPosition, position.YPosition].GotTargeted() == false)
@@ -120,7 +118,6 @@ namespace battleships_xtreme_2k19.ViewModel
                             map.Ocean[xPosition, position.YPosition].ShipIntValue = 0;
                         }
                         placementOk = true;
-
                     }
                     else
                     {

@@ -108,8 +108,9 @@ namespace battleships_xtreme_2k19.ViewModel
             }
         }
 
-        public static void IATargetFire(Player player)
+        public static Position IATargetFire(Player player)
         {
+            String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             Random rand = new Random();
             bool process = true;
             Map map = player.PlayerMap;
@@ -121,15 +122,13 @@ namespace battleships_xtreme_2k19.ViewModel
                 {
                     map.Ocean[x, y].Targeted = true;
                     process = false;
-                    if (!map.Ocean[x, y].IsWater())
-                    {
-                        map.Ocean[x, y].WasAShip = true;
-                        map.Ocean[x, y].ShipIntValue = 0;
-                    }
+                    Position positionTarget = new Position(alphabet[x],y);
+                    return positionTarget;
                 }
             }
             player.PlayerMap = map;
-            
+            Position positionReturn = new Position('A',0);
+            return positionReturn;
         }
         #endregion
 

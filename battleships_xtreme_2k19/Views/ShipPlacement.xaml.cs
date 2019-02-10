@@ -41,6 +41,7 @@ namespace battleships_xtreme_2k19.Views
         private List<Ship> ships;
         private Map playerMap;
         private Map computerMap;
+        private int nbrSquareTot;
         // Carrier
         private int carrierX;
         private int carrierY;
@@ -60,6 +61,11 @@ namespace battleships_xtreme_2k19.Views
         #endregion
 
         #region Properties
+        public int NbrSquareTot
+        {
+            get { return nbrSquareTot; }
+            set { nbrSquareTot = value; }
+        }
         // Carrier
         public int CarrierX
         {
@@ -155,13 +161,13 @@ namespace battleships_xtreme_2k19.Views
         {
         }
 
-        public ShipPlacement(int mapSize, List<Ship> ships)
+        public ShipPlacement(int mapSize, List<Ship> ships, int nbrShipSquare)
         {
             InitializeComponent();
             this.DataContext = this;
             this.MapSize = mapSize;
             this.Ships = ships;
-            
+            this.NbrSquareTot = nbrShipSquare;
             this.PlayerMap = new Map(MapSize);
             this.ComputerMap = new Map(MapSize);
             this.GenerateMap();

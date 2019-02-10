@@ -38,21 +38,11 @@ namespace battleships_xtreme_2k19.Views
         private Player player;
         private Computer computer;
         private String coordinatesTarget;
-        private List<ShipType> shipLeftPlayer;
-        private List<ShipType> shipLeftComuputer;
+
+
         #endregion
 
         #region Properties
-        public List<ShipType> ShipLeftComuputer
-        {
-            get { return shipLeftComuputer; }
-            set { shipLeftComuputer = value; }
-        }
-        public List<ShipType> ShipLeftPlayer
-        {
-            get { return shipLeftPlayer; }
-            set { shipLeftPlayer = value; }
-        }
         public String CoordinatesTarget
         {
             get { return coordinatesTarget; }
@@ -86,10 +76,6 @@ namespace battleships_xtreme_2k19.Views
             this.Computer = computer;
             GeneratePlayerMap(player.PlayerMap);
             GenerateComputerMap(computer.PlayerMap);
-            this.ShipLeftPlayer = new List<ShipType>();
-            this.ShipLeftComuputer = new List<ShipType>();
-            ShipTypeLeft(this.Player, true);
-            ShipTypeLeft(this.Computer, false);
         }
         #endregion
 
@@ -97,21 +83,6 @@ namespace battleships_xtreme_2k19.Views
         #endregion
 
         #region Functions
-        public void ShipTypeLeft(Player player, bool human)
-        {
-            
-            foreach (var ship in player.Ships)
-            {
-                if (human)
-                {
-                    this.shipLeftPlayer.Add(ship.ShipType);
-                }
-                else
-                {
-                    this.shipLeftComuputer.Add(ship.ShipType);
-                }
-            }
-        }
         public void GeneratePlayerMap(Map map)
         {
             String display = "ok";
@@ -204,117 +175,105 @@ namespace battleships_xtreme_2k19.Views
 
         }
 
-        public void ShipNumber(List<ShipType> shipList, Map map, bool player)
+        public void ShipNumber(Player gamer, Position target, bool player)
         {
-            List<ShipType> shipTampon = new List<ShipType>();
-            shipTampon = shipList;
-            int carrierNumber = 0;
-            int battleshipNumber = 0;
-            int submarineNumber = 0;
-            int destroyerNumber = 0;
-            for (int i = 0; i < map.Size; i++)
+            List<Ship> shipsTampon = new List<Ship>();
+            String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            int xTarget = alphabet.LastIndexOf(target.XPosition);
+            shipsTampon = gamer.Ships;
+            foreach (var ship in shipsTampon)
             {
-                for (int j = 0; j < map.Size; j++)
+                if (gamer.PlayerMap.Ocean[xTarget, target.YPosition].SquareValue() == 4)
                 {
-                    if (map.Ocean[i, j].ShipIntValue.Equals(4))
+                    ship.NbrSquare--;
+                    if (ship.NbrSquare == 0)
                     {
-                        carrierNumber++;
+                        int index = gamer.Ships.IndexOf(ship);
+                        gamer.Ships.RemoveAt(index);
+                        if (player)
+                        {
+                            System.Windows.MessageBox.Show("Votre Carrier a été coulé.");
+                        }
+                        else
+                        {
+                            System.Windows.MessageBox.Show("Vous avez coulé le Carrier de votre ennemi.");
+                        }
                     }
-                    if (map.Ocean[i, j].ShipIntValue.Equals(3))
-                    {
-                        battleshipNumber++;
-                    }
-                    if (map.Ocean[i, j].ShipIntValue.Equals(2))
-                    {
-                        submarineNumber++;
-                    }
-                    if (map.Ocean[i, j].ShipIntValue.Equals(1))
-                    {
-                        destroyerNumber++;
-                    }
+                    break;
                 }
+                if (gamer.PlayerMap.Ocean[xTarget, target.YPosition].SquareValue() == 3)
+                {
+                    ship.NbrSquare--;
+                    if (ship.NbrSquare == 0)
+                    {
+                        int index = gamer.Ships.IndexOf(ship);
+                        gamer.Ships.RemoveAt(index);
+                        if (player)
+                        {
+                            System.Windows.MessageBox.Show("Votre Battleship a été coulé.");
+                        }
+                        else
+                        {
+                            System.Windows.MessageBox.Show("Vous avez coulé le Battleship de votre ennemi.");
+                        }
+                    }
+                    break;
+                }
+                if (gamer.PlayerMap.Ocean[xTarget, target.YPosition].SquareValue() == 2)
+                {
+                    ship.NbrSquare--;
+                    if (ship.NbrSquare == 0)
+                    {
+                        int index = gamer.Ships.IndexOf(ship);
+                        gamer.Ships.RemoveAt(index);
+                        if (player)
+                        {
+                            System.Windows.MessageBox.Show("Votre Submarine a été coulé.");
+                        }
+                        else
+                        {
+                            System.Windows.MessageBox.Show("Vous avez coulé le Submarine de votre ennemi.");
+                        }
+                    }
+                    break;
+                }
+                if (gamer.PlayerMap.Ocean[xTarget, target.YPosition].SquareValue() == 1)
+                {
+                    ship.NbrSquare--;
+                    if (ship.NbrSquare == 0)
+                    {
+                        int index = gamer.Ships.IndexOf(ship);
+                        gamer.Ships.RemoveAt(index);
+                        if (player)
+                        {
+                            System.Windows.MessageBox.Show("Votre Destroyer a été coulé.");
+                        }
+                        else
+                        {
+                            System.Windows.MessageBox.Show("Vous avez coulé le Destroyer de votre ennemi.");
+                        }
+                    }
+                    break;
+                }
+                if (gamer.PlayerMap.Ocean[xTarget, target.YPosition].SquareValue() == 0)
+                {
+                    break;
+                }
+                    System.Console.WriteLine("random count :" + gamer.Ships.Count);
             }
-            foreach (var ship in shipTampon)
+            if (gamer.Ships.Count == 0)
             {
-                switch (ship)
+                if (player)
                 {
-                    case ShipType.Carrier:
-                        if (carrierNumber == 0)
-                        {
-                            int index = shipTampon.IndexOf(ShipType.Carrier);
-                            shipList.RemoveAt(index);
-                            if (player)
-                            {
-                                System.Windows.MessageBox.Show("Votre Carrier a été coulé.");
-                            }
-                            else
-                            {
-                                System.Windows.MessageBox.Show("Vous avez coulé le Carrier de votre ennemi.");
-                            }
-                            
-                        }
-                        break;
-                    case ShipType.Battleship:
-                        if (battleshipNumber == 0)
-                        {
-                            int index = shipTampon.IndexOf(ShipType.Battleship);
-                            shipList.RemoveAt(index);
-                            if (player)
-                            {
-                                System.Windows.MessageBox.Show("Votre Battleship a été coulé.");
-                            }
-                            else
-                            {
-                                System.Windows.MessageBox.Show("Vous avez coulé le Battleship de votre ennemi.");
-                            }
-
-                        }
-                        break;
-                    case ShipType.Submarine:
-                        if (submarineNumber == 0)
-                        {
-                            int index = shipTampon.IndexOf(ShipType.Submarine);
-                            shipList.RemoveAt(index);
-                            if (player)
-                            {
-                                System.Windows.MessageBox.Show("Votre Submarine a été coulé.");
-                            }
-                            else
-                            {
-                                System.Windows.MessageBox.Show("Vous avez coulé le Submarine de votre ennemi.");
-                            }
-
-                        }
-                        break;
-                    case ShipType.Destroyer:
-                        if (destroyerNumber == 0)
-                        {
-                            int index = shipTampon.IndexOf(ShipType.Destroyer);
-                            shipList.RemoveAt(index);
-                            if (player)
-                            {
-                                System.Windows.MessageBox.Show("Votre Destroyer a été coulé.");
-                            }
-                            else
-                            {
-                                System.Windows.MessageBox.Show("Vous avez coulé le Destroyer de votre ennemi.");
-                            }
-
-                        }
-                        break;
+                    System.Windows.MessageBox.Show("Votre avez perdu!! Rekt par un PC en mode easy...");
                 }
-                if (shipTampon.Count.Equals(0))
+                else
                 {
-                    if (player)
-                    {
-                        System.Windows.MessageBox.Show("Vous avez perdu!!");
-                    }
-                    else
-                    {
-                        System.Windows.MessageBox.Show("Vous avez gagné!!");
-                    }
+                    System.Windows.MessageBox.Show("Vous avez gagné!! Vous enflammez pas non plus c'était en mode easy...");
                 }
+
             }
+
         }
         #endregion
 
@@ -329,14 +288,19 @@ namespace battleships_xtreme_2k19.Views
                 try
                 {
                     int y = Int32.Parse(yString);
-                    System.Console.WriteLine(y);
                     Position target = new Position(this.CoordinatesTarget[0], y);
                     PlayerViewControl.TargetFire(target, this.Computer);
-                    //ShipNumber(this.ShipLeftComuputer, this.Computer.PlayerMap, false);
-                    ComputerViewControl.IATargetFire(this.Player);
-                    //ShipNumber(this.ShipLeftPlayer, this.Player.PlayerMap, true);
-                    GeneratePlayerMap(this.Player.PlayerMap);
-                    GenerateComputerMap(this.Computer.PlayerMap);
+                    this.ShipNumber(this.Computer, target, false);
+                    System.Console.WriteLine("PC count :"+this.Computer.Ships.Count);
+                    if (this.Computer.Ships.Count != 0)
+                    {
+                        target = ComputerViewControl.IATargetFire(this.Player);
+                        this.ShipNumber(this.Player, target, true);
+                        GeneratePlayerMap(this.Player.PlayerMap);
+                        GenerateComputerMap(this.Computer.PlayerMap);
+                        System.Console.WriteLine("human count :" + this.Player.Ships.Count);
+                    }
+                    
                 }
                 catch (Exception)
                 {

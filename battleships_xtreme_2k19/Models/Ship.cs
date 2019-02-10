@@ -24,9 +24,18 @@ namespace battleships_xtreme_2k19.Models
         private bool isSink;
         private List<Position> shipPositions;
         private int shipValue;
+        private int nbrSquare;
+
+
+
         #endregion
 
         #region Properties
+        public int NbrSquare
+        {
+            get { return nbrSquare; }
+            set { nbrSquare = value; }
+        }
         public int ShipValue
         {
             get { return shipValue; }
@@ -63,12 +72,13 @@ namespace battleships_xtreme_2k19.Models
         /// <summary>
         /// Default constructor.
         /// </summary>
-        public Ship(ShipType shipType, int width, int height, bool isSink)
+        public Ship(ShipType shipType, int width, int height, bool isSink, int nbrSquare)
         {
             this.shipType = shipType;
             this.width = width;
             this.height = height;
             this.isSink = isSink;
+            this.NbrSquare = nbrSquare;
             switch (shipType)
             {
                 case ShipType.Carrier:

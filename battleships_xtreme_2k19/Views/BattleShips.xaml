@@ -24,7 +24,6 @@
         </Grid.RowDefinitions>
         <Grid x:Name="playerGrid" Grid.Row="1" Grid.Column="1"></Grid>
         <Grid x:Name="computerGrid" Grid.Row="1" Grid.Column="4"></Grid>
-        <TextBlock x:Name="carrier" FontWeight="Bold" Grid.Row="1" Grid.Column="0">Carrier</TextBlock>
         <Grid Grid.Column="4" Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>

@@ -96,7 +96,7 @@ namespace battleships_xtreme_2k19.UserControl
             InitializeComponent();
             this.DataContext = this;
             this.BtnName = text;
-            this.Color = "Grey";
+            this.Color = "#B9C9D0";
         }
         public UserControl1(ISquare square, int x, int y, bool display)
         {

@@ -134,9 +134,13 @@ namespace battleships_xtreme_2k19.Views
         #region Events
         private void BtnConfirmShips_Click(object sender, RoutedEventArgs e)
         {
+            int nbrSquareCarrier = this.CarrierWidth * this.CarrierHeight;
+            int nbrSquareBattleship = this.BattleshipHeight * this.BattleshipWidth;
+            int nbrSquareSubmarine = this.SubmarineHeight * this.SubmarineWidth;
+            int nbrSquareDestroyer = this.DestroyerHeight * this.DestroyerWidth;
             int nbrEmpty = this.MapSize * this.MapSize;
-            int nbrShip = (this.CarrierWidth * this.CarrierWidth) + (this.BattleshipHeight * this.BattleshipWidth) + (this.SubmarineHeight * this.SubmarineWidth) + (this.DestroyerHeight * this.DestroyerWidth);
-            if ((this.CarrierWidth * this.CarrierWidth) == 0 || (this.BattleshipHeight * this.BattleshipWidth) == 0 || (this.SubmarineHeight * this.SubmarineWidth) == 0 || (this.DestroyerHeight * this.DestroyerWidth) == 0)
+            int nbrShip = nbrSquareCarrier + nbrSquareBattleship + nbrSquareSubmarine + nbrSquareDestroyer;
+            if (nbrSquareCarrier == 0 || nbrSquareBattleship == 0 || nbrSquareSubmarine == 0 || nbrSquareDestroyer == 0)
             {
                 System.Windows.MessageBox.Show("Un de vos bateaux est invisible, il va être dur à placer...");
             }
@@ -144,20 +148,21 @@ namespace battleships_xtreme_2k19.Views
             {
                 if (nbrEmpty > nbrShip)
                 {
+
                     // Carrier
-                    Ship carrier = new Ship(ShipType.Carrier, this.CarrierWidth, this.CarrierHeight, false);
+                    Ship carrier = new Ship(ShipType.Carrier, this.CarrierWidth, this.CarrierHeight, false, nbrSquareCarrier);
                     this.Ships.Add(carrier);
                     // Battleship
-                    Ship battleship = new Ship(ShipType.Battleship, this.BattleshipWidth, this.BattleshipHeight, false);
+                    Ship battleship = new Ship(ShipType.Battleship, this.BattleshipWidth, this.BattleshipHeight, false, nbrSquareBattleship);
                     this.Ships.Add(battleship);
                     // Submarine
-                    Ship submarine = new Ship(ShipType.Submarine, this.SubmarineWidth, this.SubmarineHeight, false);
+                    Ship submarine = new Ship(ShipType.Submarine, this.SubmarineWidth, this.SubmarineHeight, false, nbrSquareSubmarine);
                     this.Ships.Add(submarine);
                     // Destroyer
-                    Ship destroyer = new Ship(ShipType.Destroyer, this.DestroyerWidth, this.DestroyerHeight, false);
+                    Ship destroyer = new Ship(ShipType.Destroyer, this.DestroyerWidth, this.DestroyerHeight, false, nbrSquareDestroyer);
                     this.Ships.Add(destroyer);
 
-                    (this.Parent as Window).Content = new ShipPlacement(this.mapSize, this.Ships);
+                    (this.Parent as Window).Content = new ShipPlacement(this.mapSize, this.Ships, nbrShip);
 
                 }
                 else

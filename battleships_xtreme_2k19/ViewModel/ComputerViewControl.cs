@@ -26,6 +26,7 @@ namespace battleships_xtreme_2k19.ViewModel
             Random rand = new Random();
             foreach (var ship in computer.Ships)
             {
+                List<Position> positions = new List<Position>();
                 Console.WriteLine(ship.ShipType);
                 Map map = computer.PlayerMap;
                 bool shipPlacement = false;
@@ -49,11 +50,11 @@ namespace battleships_xtreme_2k19.ViewModel
                                             Position shipPosition = new Position(alphabet[i], j);
                                             map.Ocean[i, j] = new SquareShip(false, shipPosition, ship.ShipValue);
                                             shipPlacement = true;
+                                            positions.Add(shipPosition);
                                         }
                                         else
                                         {
                                             shipPlacement = false;
-                                            Console.WriteLine("NOP");
                                             break;
                                         }
                                     }
@@ -81,6 +82,7 @@ namespace battleships_xtreme_2k19.ViewModel
                                             Position shipPosition = new Position(alphabet[i], j);
                                             map.Ocean[i, j] = new SquareShip(false, shipPosition, ship.ShipValue);
                                             shipPlacement = true;
+                                            positions.Add(shipPosition);
                                         }
                                         else
                                         {
@@ -101,6 +103,7 @@ namespace battleships_xtreme_2k19.ViewModel
                 if (shipPlacement)
                 {
                     computer.PlayerMap = map;
+                    ship.ShipPositions = positions;
                 }
             }
         }
@@ -109,16 +112,23 @@ namespace battleships_xtreme_2k19.ViewModel
         {
             Random rand = new Random();
             bool process = true;
+            Map map = player.PlayerMap;
             while (process)
             {
-                int x = rand.Next(player.PlayerMap.Size);
-                int y = rand.Next(player.PlayerMap.Size);
-                if (player.PlayerMap.Ocean[x, y].GotTargeted() == false)
+                int x = rand.Next(map.Size);
+                int y = rand.Next(map.Size);
+                if (map.Ocean[x, y].GotTargeted() == false)
                 {
-                    player.PlayerMap.Ocean[x, x].Targeted = true;
+                    map.Ocean[x, y].Targeted = true;
                     process = false;
+                    if (!map.Ocean[x, y].IsWater())
+                    {
+                        map.Ocean[x, y].WasAShip = true;
+                        map.Ocean[x, y].ShipIntValue = 0;
+                    }
                 }
             }
+            player.PlayerMap = map;
             
         }
         #endregion

@@ -26,6 +26,7 @@ namespace battleships_xtreme_2k19.ViewModel
             bool shipPlacement = false;
             String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             Map map = player.PlayerMap;
+            List<Position> positions = new List<Position>();
             if (direction == true)
             {
                 if (ship.Height + x < map.Size)
@@ -41,6 +42,7 @@ namespace battleships_xtreme_2k19.ViewModel
                                     Position shipPosition = new Position(alphabet[i], j);
                                     map.Ocean[i, j] = new SquareShip(false, shipPosition, ship.ShipValue);
                                     shipPlacement = true;
+                                    positions.Add(shipPosition);
                                 }
                                 else
                                 {
@@ -72,6 +74,7 @@ namespace battleships_xtreme_2k19.ViewModel
                                     Position shipPosition = new Position(alphabet[i], j);
                                     map.Ocean[i, j] = new SquareShip(false, shipPosition, ship.ShipValue);
                                     shipPlacement = true;
+                                    positions.Add(shipPosition);
                                 }
                                 else
                                 {
@@ -89,38 +92,29 @@ namespace battleships_xtreme_2k19.ViewModel
                     }
                 }
             }
+            if (shipPlacement)
+            {
+                ship.ShipPositions = positions;
+            }
             return shipPlacement;
         }
 
-        public static String TargetFire(Position position, Computer computer)
+        public static void TargetFire(Position position, Computer computer)
         {
-            String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
+            int xPosition = alphabet.LastIndexOf(position.XPosition);
             Map map = computer.PlayerMap;
-            for (int i = 0; i < computer.PlayerMap.Size; i++)
+            if (map.Ocean[xPosition, position.YPosition].GotTargeted() == false)
             {
-                for (int j = 0; j < computer.PlayerMap.Size; j++)
+                map.Ocean[xPosition,position.YPosition].Targeted = true;
+                if (!map.Ocean[xPosition, position.YPosition].IsWater())
                 {
-                    if (position.XPosition.Equals(alphabet[i]) && position.YPosition.Equals(j) && map.Ocean[i, j].GotTargeted() == false)
-                    {
-                        map.Ocean[i, j].Targeted = true;
-                        if (map.Ocean[i, j].IsWater())
-                        {
-                            computer.PlayerMap = map;
-                            return "Vous avez tiré dans l'eau.";
-                        }
-                        else
-                        {
-                            computer.PlayerMap = map;
-                            return "Vous avez touché un bateau!";
-                        }
-                    }
-                    else if (position.XPosition.Equals(alphabet[i]) && position.YPosition.Equals(j) && map.Ocean[i, j].GotTargeted() == true)
-                    {
-                        return "Vous avez déjà tiré sur cette zone.";
-                    }
+                    map.Ocean[xPosition, position.YPosition].WasAShip = true;
+                    map.Ocean[xPosition, position.YPosition].ShipIntValue = 0;
                 }
+                
             }
-            return "";
+            computer.PlayerMap = map;
         }
         #endregion
 

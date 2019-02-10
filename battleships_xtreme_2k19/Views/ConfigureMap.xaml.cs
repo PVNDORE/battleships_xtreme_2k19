@@ -65,7 +65,15 @@ namespace battleships_xtreme_2k19.Views
         #region Events
         private void BtnConfirmMapSize_Click(object sender, RoutedEventArgs e)
         {
-            (this.Parent as Window).Content = new ConfigureShips(this.mapSize);
+            if (this.MapSize > 4 && this.MapSize < 26)
+            {
+                (this.Parent as Window).Content = new ConfigureShips(this.mapSize);
+            }
+            else
+            {
+                System.Windows.MessageBox.Show("Veuillez entrer une taille de carte entre 5 et 26");
+            }
+            
         }
         #endregion
     }

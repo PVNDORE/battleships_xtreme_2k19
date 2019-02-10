@@ -99,22 +99,46 @@ namespace battleships_xtreme_2k19.ViewModel
             return shipPlacement;
         }
 
-        public static void TargetFire(Position position, Computer computer)
+        public static bool TargetFire(Position position, Computer computer)
         {
+            bool placementOk = false;
             String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
             int xPosition = alphabet.LastIndexOf(position.XPosition);
             Map map = computer.PlayerMap;
-            if (map.Ocean[xPosition, position.YPosition].GotTargeted() == false)
+            if (xPosition >= 0 && xPosition < 26)
             {
-                map.Ocean[xPosition,position.YPosition].Targeted = true;
-                if (!map.Ocean[xPosition, position.YPosition].IsWater())
+                System.Console.WriteLine("y: "+position.YPosition);
+                System.Console.WriteLine("mapsize: " + map.Size);
+                if (position.YPosition > 0 || position.YPosition <= map.Size)
                 {
-                    map.Ocean[xPosition, position.YPosition].WasAShip = true;
-                    map.Ocean[xPosition, position.YPosition].ShipIntValue = 0;
+                    if (map.Ocean[xPosition, position.YPosition].GotTargeted() == false)
+                    {
+                        map.Ocean[xPosition, position.YPosition].Targeted = true;
+                        if (!map.Ocean[xPosition, position.YPosition].IsWater())
+                        {
+                            map.Ocean[xPosition, position.YPosition].WasAShip = true;
+                            map.Ocean[xPosition, position.YPosition].ShipIntValue = 0;
+                        }
+                        placementOk = true;
+
+                    }
+                    else
+                    {
+                        System.Windows.MessageBox.Show("Vous avez déjà tiré dans cette zone.");
+                    }
+
                 }
-                
+                else
+                {
+                    System.Windows.MessageBox.Show("Veuillez entrer une cible valide. Votre chiffre sort des limites du tableau.");
+                }
+            }
+            else
+            {
+                System.Windows.MessageBox.Show("Veuillez entrer une cible valide. avec la première coordonnée en majuscule");
             }
             computer.PlayerMap = map;
+            return placementOk;
         }
         #endregion
 

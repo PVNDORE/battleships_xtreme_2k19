@@ -3,6 +3,7 @@ using battleships_xtreme_2k19.UserControl;
 using battleships_xtreme_2k19.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -322,14 +323,28 @@ namespace battleships_xtreme_2k19.Views
 
         private void btnConfirmtarget_Click(object sender, RoutedEventArgs e)
         {
-            int y = this.CoordinatesTarget[1] - '0';
-            Position target = new Position(this.CoordinatesTarget[0], y);
-            PlayerViewControl.TargetFire(target, this.Computer);
-            //ShipNumber(this.ShipLeftComuputer, this.Computer.PlayerMap, false);
-            ComputerViewControl.IATargetFire(this.Player);
-            //ShipNumber(this.ShipLeftPlayer, this.Player.PlayerMap, true);
-            GeneratePlayerMap(this.Player.PlayerMap);
-            GenerateComputerMap(this.Computer.PlayerMap);
+            
+            String yString = this.CoordinatesTarget.Substring(1);
+            System.Console.WriteLine(yString);
+            try
+            {
+                int y = Int32.Parse(yString);
+                System.Console.WriteLine(y);
+                Position target = new Position(this.CoordinatesTarget[0], y);
+                PlayerViewControl.TargetFire(target, this.Computer);
+                //ShipNumber(this.ShipLeftComuputer, this.Computer.PlayerMap, false);
+                ComputerViewControl.IATargetFire(this.Player);
+                //ShipNumber(this.ShipLeftPlayer, this.Player.PlayerMap, true);
+                GeneratePlayerMap(this.Player.PlayerMap);
+                GenerateComputerMap(this.Computer.PlayerMap);
+            }
+            catch (Exception)
+            {
+
+                System.Windows.MessageBox.Show("Veuillez entrer une cible valide. Les ingénieurs qui organisent le tir n'ont rien compris à votre demande.");
+            }
+            
+            
 
         }
     }

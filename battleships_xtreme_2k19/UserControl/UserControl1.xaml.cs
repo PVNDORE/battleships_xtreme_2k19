@@ -36,9 +36,7 @@ namespace battleships_xtreme_2k19.UserControl
         private ISquare square;
         private int x;
         private int y;
-        private String direction;
         private String color;
-        private Ship shipSelected;
         private String btnName;
         #endregion
 
@@ -84,13 +82,66 @@ namespace battleships_xtreme_2k19.UserControl
             this.BtnName = x.ToString() + "." +  y.ToString();
             if (Square.IsWater())
             {
-                this.Color = "Blue";
+                this.Color = "#388BBA";
             }
             else
             {
                 this.Color = "Black";
             }
             
+        }
+
+        public UserControl1(String text)
+        {
+            InitializeComponent();
+            this.DataContext = this;
+            this.BtnName = text;
+            this.Color = "Grey";
+        }
+        public UserControl1(ISquare square, int x, int y, bool display)
+        {
+            InitializeComponent();
+            this.DataContext = this;
+            this.Square = square;
+            this.X = x;
+            this.Y = y;
+            if (square.GotTargeted() && square.IsWater())
+            {
+                this.Color = "Red";
+            }
+            else if (square.GotTargeted())
+            {
+                this.Color = "Green";
+            }
+            else
+            {
+                this.Color = "#388BBA";
+            }
+
+        }
+
+        public UserControl1(ISquare square, int x, int y, String display)
+        {
+            InitializeComponent();
+            this.DataContext = this;
+            this.Square = square;
+            this.X = x;
+            this.Y = y;
+            this.Color = "#388BBA";
+            if (square.GotTargeted() && square.IsWater())
+            {
+                this.Color = "Red";
+            }
+            if (!square.IsWater())
+            {
+                this.Color = "Black";
+            }
+            if (!square.IsWater() && square.GotTargeted())
+            {
+                this.Color = "Green";
+            }
+            
+
         }
         #endregion
 
@@ -103,9 +154,7 @@ namespace battleships_xtreme_2k19.UserControl
         #region Events
         private void Btn_Click(object sender, RoutedEventArgs e)
         {
-            String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            Position position = new Position(alphabet[this.X], this.Y);
-            this.square = new SquareShip(false, position, 1);
+            this.Square.Targeted = true;
             
         }
         #endregion

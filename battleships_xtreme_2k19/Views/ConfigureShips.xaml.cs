@@ -136,28 +136,36 @@ namespace battleships_xtreme_2k19.Views
         {
             int nbrEmpty = this.MapSize * this.MapSize;
             int nbrShip = (this.CarrierWidth * this.CarrierWidth) + (this.BattleshipHeight * this.BattleshipWidth) + (this.SubmarineHeight * this.SubmarineWidth) + (this.DestroyerHeight * this.DestroyerWidth);
-            if (nbrEmpty > nbrShip)
+            if ((this.CarrierWidth * this.CarrierWidth) == 0 || (this.BattleshipHeight * this.BattleshipWidth) == 0 || (this.SubmarineHeight * this.SubmarineWidth) == 0 || (this.DestroyerHeight * this.DestroyerWidth) == 0)
             {
-                // Carrier
-                Ship carrier = new Ship(ShipType.Carrier, this.CarrierWidth, this.CarrierHeight, false);
-                this.Ships.Add(carrier);
-                // Battleship
-                Ship battleship = new Ship(ShipType.Battleship, this.BattleshipWidth, this.BattleshipHeight, false);
-                this.Ships.Add(battleship);
-                // Submarine
-                Ship submarine = new Ship(ShipType.Submarine, this.SubmarineWidth, this.SubmarineHeight, false);
-                this.Ships.Add(submarine);
-                // Destroyer
-                Ship destroyer = new Ship(ShipType.Destroyer, this.DestroyerWidth, this.DestroyerHeight, false);
-                this.Ships.Add(destroyer);
-
-                (this.Parent as Window).Content = new ShipPlacement(this.mapSize, this.Ships);
-
+                System.Windows.MessageBox.Show("Un de vos bateaux est invisible, il va être dur à placer...");
             }
             else
             {
-                System.Windows.MessageBox.Show("Vos bateaux sont trop gros, ils dépassent la taille de l'océan.");
+                if (nbrEmpty > nbrShip)
+                {
+                    // Carrier
+                    Ship carrier = new Ship(ShipType.Carrier, this.CarrierWidth, this.CarrierHeight, false);
+                    this.Ships.Add(carrier);
+                    // Battleship
+                    Ship battleship = new Ship(ShipType.Battleship, this.BattleshipWidth, this.BattleshipHeight, false);
+                    this.Ships.Add(battleship);
+                    // Submarine
+                    Ship submarine = new Ship(ShipType.Submarine, this.SubmarineWidth, this.SubmarineHeight, false);
+                    this.Ships.Add(submarine);
+                    // Destroyer
+                    Ship destroyer = new Ship(ShipType.Destroyer, this.DestroyerWidth, this.DestroyerHeight, false);
+                    this.Ships.Add(destroyer);
+
+                    (this.Parent as Window).Content = new ShipPlacement(this.mapSize, this.Ships);
+
+                }
+                else
+                {
+                    System.Windows.MessageBox.Show("Vos bateaux sont trop gros, ils dépassent la taille de l'océan.");
+                }
             }
+            
             
         
         }

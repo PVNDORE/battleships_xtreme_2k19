@@ -274,7 +274,7 @@ namespace battleships_xtreme_2k19.Views
                 using (var db = new ApplicationDbContext())
                 {
                     db.MapDbSet.Add(this.PlayerMap);
-
+                    db.MapDbSet.Add(this.ComputerMap);
                     db.SaveChanges();
 
                 }

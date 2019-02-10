@@ -66,7 +66,7 @@ namespace battleships_xtreme_2k19.Models
                 for (int j = 0; j < size; j++)
                 {
                     Position coordonates = new Position(alphabet[i], j);
-                    this.Ocean[i,j] = new Water(false, coordonates);
+                    this.Ocean[i,j] = new Water(false, coordonates, false);
                 }
             }
             this.mapString = this.ToString();

@@ -21,9 +21,21 @@ namespace battleships_xtreme_2k19.Models
         private bool targeted;
         private Position coordonates;
         private int shipValue;
+        private bool wasAShip;
+        private int shipIntValue;
         #endregion
 
         #region Properties
+        public bool WasAShip
+        {
+            get { return wasAShip; }
+            set { wasAShip = value; }
+        }
+        public int ShipIntValue
+        {
+            get { return shipIntValue; }
+            set { shipIntValue = value; }
+        }
         public bool Targeted
         {
             get { return targeted; }
@@ -70,7 +82,6 @@ namespace battleships_xtreme_2k19.Models
         {
             return this.shipValue+" ";
         }
-
         #endregion
 
         #region StaticFunctions

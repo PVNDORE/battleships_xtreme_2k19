@@ -13,7 +13,17 @@ namespace battleships_xtreme_2k19.Models
             get;
             set;
         }
+        bool WasAShip
+        {
+            get;
+            set;
+        }
         Position Coordonates
+        {
+            get;
+            set;
+        }
+        int ShipIntValue
         {
             get;
             set;

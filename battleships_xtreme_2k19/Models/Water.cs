@@ -20,9 +20,21 @@ namespace battleships_xtreme_2k19.Models
         #region Attributs
         private bool targeted;
         private Position coordonates;
+        private bool wasAShip;
+        private int shipIntValue;
         #endregion
 
         #region Properties
+        public int ShipIntValue
+        {
+            get { return shipIntValue; }
+            set { shipIntValue = value; }
+        }
+        public bool WasAShip
+        {
+            get { return wasAShip; }
+            set { wasAShip = value; }
+        }
         public Position Coordonates
         {
             get { return coordonates; }
@@ -39,10 +51,11 @@ namespace battleships_xtreme_2k19.Models
         /// <summary>
         /// Default constructor.
         /// </summary>
-        public Water(bool targeted, Position coordonates)
+        public Water(bool targeted, Position coordonates, bool wasAship)
         {
             this.Targeted = targeted;
             this.Coordonates = coordonates;
+            this.WasAShip = false;
         }
 
         public bool GotTargeted()
@@ -64,6 +77,7 @@ namespace battleships_xtreme_2k19.Models
         {
             return "0 ";
         }
+        
         #endregion
 
         #region StaticFunctions

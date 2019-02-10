@@ -24,5 +24,16 @@
         </Grid.RowDefinitions>
         <Grid x:Name="playerGrid" Grid.Row="1" Grid.Column="1"></Grid>
         <Grid x:Name="computerGrid" Grid.Row="1" Grid.Column="4"></Grid>
+        <TextBlock x:Name="carrier" FontWeight="Bold" Grid.Row="1" Grid.Column="0">Carrier</TextBlock>
+        <Grid Grid.Column="4" Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="titleCoordinates" FontWeight="Bold" Grid.Column="0" TextAlignment="center">Coordinates to target</TextBlock>
+            <TextBox x:Name="CoordonatesTargeted" Grid.Column="1" Text="{Binding CoordinatesTarget, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        </Grid>
+        <Button x:Name="btnConfirmtarget" Grid.Column="6" Grid.Row="6" Click="btnConfirmtarget_Click">Confirm Target</Button>
+
     </Grid>
 </Page>
